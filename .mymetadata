@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="mahout1.0"
+  id="myeclipse.1432624985674"
+  context-root="/ssh"
+  j2ee-spec="1.7"
+  archive="mahout1.0.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+
