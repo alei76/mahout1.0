@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.fz.dao.BaseDao;
+import com.fz.dao.BaseDAO;
 import com.fz.model.User;
 import com.fz.util.HUtils;
 
@@ -23,7 +23,7 @@ import com.fz.util.HUtils;
 public class TestService {
 	private Logger log = LoggerFactory.getLogger(TestService.class);
 	@Resource
-	private BaseDao<User> baseDao;
+	private BaseDAO<User> baseDao;
 	/**
 	 * 保存测试完成
 	 */

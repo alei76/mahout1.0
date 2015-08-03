@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
   
 @Repository("baseDAO")  
 @SuppressWarnings("all")  
-public class BaseDaoImpl<T> implements BaseDao<T> {  
+public class BaseDaoImpl<T> implements BaseDAO<T> {  
 	private Logger log = LoggerFactory.getLogger(BaseDaoImpl.class);
     private SessionFactory sessionFactory;  
   

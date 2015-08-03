@@ -4,7 +4,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
-        <property name="context-root" value="/ssh"/>
-        <property name="java-output-path" value="/ssh Maven Webapp/src/main/webapp/src/main/resources"/>
+        <property name="context-root" value="/mahout_algorithm"/>
+        <property name="java-output-path" value="/mahout1.0/src/main/webapp/src/main/resources"/>
     </wb-module>
 </project-modules>

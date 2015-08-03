@@ -1,6 +1,8 @@
 package com.fz.model;
 
 import java.io.Serializable;
+import java.util.Map;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,22 +11,27 @@ import javax.persistence.Table;
 @Entity
 @Table(name="hconstants")
 /**
- * hadoop 常量类
+ * 集群配置表
  * @author fansy
- * @date 2015-6-8
+ * @date 2015-6-10
  */
-public class HConstants implements Serializable {
-
+public class HConstants implements Serializable,ObjectInterface {
+	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	private Integer id;
-	private String hkey;
-	private String hvalue;
+	private String custKey;
+	private String custValue;
 	private String description;
 	
 	public HConstants(){	}
-	public HConstants (String key, String value){
-		this.hkey=key;
-		this.hvalue=value;
+	
+	public HConstants(String key,String value,String desc){
+		this.custKey=key;
+		this.custValue=value;
+		this.description=desc;
 	}
 	
 	@Id
@@ -36,29 +43,38 @@ public class HConstants implements Serializable {
 		this.id = id;
 	}
 
-	/**
-	 * @return the description
-	 */
 	public String getDescription() {
 		return description;
 	}
-	/**
-	 * @param description the description to set
-	 */
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getHkey() {
-		return hkey;
+
+	public String getCustKey() {
+		return custKey;
 	}
-	public void setHkey(String hkey) {
-		this.hkey = hkey;
+
+	public void setCustKey(String custKey) {
+		this.custKey = custKey;
 	}
-	public String getHvalue() {
-		return hvalue;
+
+	public String getCustValue() {
+		return custValue;
 	}
-	public void setHvalue(String hvalue) {
-		this.hvalue = hvalue;
+
+	public void setCustValue(String custValue) {
+		this.custValue = custValue;
+	}
+
+	@Override
+	public Object setObjectByMap(Map<String, Object> map) {
+		HConstants hc = new HConstants();
+		hc.setCustKey((String)map.get("custKey"));
+		hc.setCustValue((String)map.get("custValue"));
+		hc.setDescription((String)map.get("description"));
+		hc.setId((Integer)map.get("id"));
+		return hc;
 	}
 	
 }

@@ -3,7 +3,7 @@
   type="WEB"
   name="mahout1.0"
   id="myeclipse.1432624985674"
-  context-root="/ssh"
+  context-root="/mahout_algorithm"
   j2ee-spec="1.7"
   archive="mahout1.0.war">
   <attributes>
