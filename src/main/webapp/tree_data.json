@@ -24,6 +24,7 @@
 	},{
 		"id":12,
 		"text":"数据生成",
+		"state":"closed",
 		"attributes":{
 				"folder":"1"
 		},
@@ -82,6 +83,7 @@
 	},{
 		"id":13,
 		"text":"工具类MR",
+		"state":"closed",
 		"attributes":{
 				"folder":"1"
 		},
@@ -99,7 +101,6 @@
 				"folder":"0",
 				"url":"utils/clusterdump.jsp"
 			}
-			
 		},{
 			"id":133,
 			"text":"seqdumper",
@@ -180,38 +181,199 @@
 		}]
 	},{
 		"id":14,
-		"text":"聚类中心及推荐",
+		"text":"Math MR",
+		"state":"closed",
 		"attributes":{
 				"folder":"1"
 		},
 		"children":[{
 			"id":141,
-			"text":"组别入库",
+			"text":"transpose",
 			"attributes":{
 				"folder":"0",
-				"url":"recommend/group2db.jsp"
+				"url":"math/transpose.jsp"
 			}
 		},{
 			"id":142,
-			"text":"聚类中心及占比",
+			"text":"matrixmult",
 			"attributes":{
 				"folder":"0",
-				"url":"recommend/group.jsp"
+				"url":"math/matrixmult.jsp"
 			}
 		},{
 			"id":143,
-			"text":"用户查询及推荐",
+			"text":"svd",
 			"attributes":{
 				"folder":"0",
-				"url":"recommend/recommend.jsp"
+				"url":"math/svd.jsp"
+			}
+		},{
+			"id":144,
+			"text":"cleansvd",
+			"attributes":{
+				"folder":"0",
+				"url":"math/cleansvd.jsp"
+			}
+		},{
+			"id":145,
+			"text":"rowsimilarity",
+			"attributes":{
+				"folder":"0",
+				"url":"math/rowsimilarity.jsp"
+			}
+		},{
+			"id":146,
+			"text":"vecdist",
+			"attributes":{
+				"folder":"0",
+				"url":"math/vecdist.jsp"
+			}
+		},{
+			"id":147,
+			"text":"ssvd",
+			"attributes":{
+				"folder":"0",
+				"url":"math/ssvd.jsp"
 			}
 		}]
 	},{
 		"id":15,
-		"text":"about.html",
+		"text":"聚类 MR",
 		"attributes":{
+				"folder":"1"
+			},
+		"state":"closed",
+		"children":[{
+			"id":151,
+			"text":"kmeans",
+			"attributes":{
 				"folder":"0",
-				"url":"about.html"
+				"url":"clustering/kmeans.jsp"
 			}
+		},{
+			"id":152,
+			"text":"fkmeans",
+			"attributes":{
+				"folder":"0",
+				"url":"clustering/fkmeans.jsp"
+			}
+		},{
+			"id":153,
+			"text":"cvb",
+			"attributes":{
+				"folder":"0",
+				"url":"clustering/cvb.jsp"
+			}
+		},{
+			"id":154,
+			"text":"cvb0_local",
+			"attributes":{
+				"folder":"0",
+				"url":"clustering/cvb0_local.jsp"
+			}
+		},{
+			"id":155,
+			"text":"canopy",
+			"attributes":{
+				"folder":"0",
+				"url":"clustering/canopy.jsp"
+			}
+		},{
+			"id":156,
+			"text":"spectralkmeans",
+			"attributes":{
+				"folder":"0",
+				"url":"clustering/spectralkmeans.jsp"
+			}
+		},{
+			"id":157,
+			"text":"clusterpp",
+			"attributes":{
+				"folder":"0",
+				"url":"clustering/clusterpp.jsp"
+			}
+		},{
+			"id":158,
+			"text":"streamingkmeans",
+			"attributes":{
+				"folder":"0",
+				"url":"clustering/streamingkmeans.jsp"
+			}
+		}]
+	},{
+		"id":16,
+		"text":"分类MR",
+		"attributes":{
+			"folder":"1"
+		},
+		"state":"closed",
+		"children":[{
+			"id":160,
+			"text":"trainnb",
+			"attributes":{
+				"folder":"0",
+				"url":"classification/trainnb.jsp"
+			}
+		}]
+	},{
+		"id":17,
+		"text":"SGD MR",
+		"attributes":{
+			"folder":"1"
+		},
+		"state":"closed",
+		"children":[{
+			"id":170,
+			"text":"trainlogistic",
+			"attributes":{
+				"folder":"0",
+				"url":"sgd/trainlogistic.jsp"
+			}
+		}]
+	},{
+		"id":18,
+		"text":"HMM MR",
+		"attributes":{
+			"folder":"1"
+		},
+		"state":"closed",
+		"children":[{
+			"id":180,
+			"text":"baumwelch",
+			"attributes":{
+				"folder":"0",
+				"url":"hmm/baumwelch.jsp"
+			}
+		}]
+	},{
+		"id":19,
+		"text":"Classifier Utils",
+		"attributes":{
+			"folder":"1"
+		},
+		"state":"closed",
+		"children":[{
+			"id":190,
+			"text":"cmdump",
+			"attributes":{
+				"folder":"0",
+				"url":"classifier/cmdump.jsp"
+			}
+		}]
+	},{
+		"id":20,
+		"text":"推荐MR",
+		"attributes":{
+			"folder":"1"
+		},
+		"state":"closed",
+		"children":[{
+			"id":200,
+			"text":"splitDataset",
+			"attributes":{
+				"folder":"0",
+				"url":"recommenders/splitDataset.jsp"
+			}
+		}]
 	}]
 }]
