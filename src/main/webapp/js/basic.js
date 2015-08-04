@@ -32,8 +32,15 @@ function callByAJax(url,data_){
 			var retMsg;
 			if("true"==data.flag){
 				retMsg='操作成功！';
-				if(typeof data.msg !="undefined"){
-					retMsg=retMsg+data.msg;
+				if(typeof data.return_show !="undefined"){// 读取文件
+					var return_id = "#"+data.return_show+"";
+//					var obj=document.getElementById(data.return_show);
+//					obj.html(data.return_txt);
+					$(return_id).html(data.return_txt);
+//					console.info($(return_id));
+					console.info('defined:'+data.return_show);
+				}else{
+					console.info('undefined');
 				}
 			}else{
 				retMsg='操作失败！失败原因：'+data.msg;

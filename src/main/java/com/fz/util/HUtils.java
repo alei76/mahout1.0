@@ -206,21 +206,6 @@ public class HUtils {
 
 		return new Path(url);
 	}
-	
-	/**
-	 * use the oath distance
-	 * 
-	 * @param inputI
-	 * @param ds
-	 * @return
-	 */
-	public static double getDistance(double[] inputI, double[] ds) {
-		double error = 0.0;
-		for (int i = 0; i < inputI.length; i++) {
-			error += (inputI[i] - ds[i]) * (inputI[i] - ds[i]);
-		}
-		return Math.sqrt(error);
-	}
 
 	/**
 	 * 上传本地文件到HFDS
@@ -399,6 +384,41 @@ public class HUtils {
 			list.add(new CurrentJobInfo());
 		}
 
+	}
+	/**
+	 * 按照行数读取txt文件，并返回字符串
+	 * @param input
+	 * @param lines
+	 * @param splitter : 每行数据的分隔符
+	 * @return
+	 * @throws Exception 
+	 */
+	public static String readTxt(String input,String lines,String splitter) throws Exception{
+		StringBuffer buff = new StringBuffer();
+		Path path = new Path(input);
+		long lineNum= Long.parseLong(lines);
+		InputStream in = null;
+		try {
+			FileSystem fs = getFs();
+			in = fs.open(path);
+			BufferedReader read = new BufferedReader(new InputStreamReader(in));
+			String line = null;
+
+			while ((line = read.readLine()) != null&&lineNum-->0) {
+				buff.append(line).append(splitter);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			try {
+				in.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+				throw e;
+			}
+		}
+		return buff.toString();
 	}
 
 	/**

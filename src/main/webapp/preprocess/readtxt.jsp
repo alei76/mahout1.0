@@ -41,6 +41,7 @@
 		</table>
 	
 	</div> 
+	<div id="readtxt_return" style="padding-left: 30px;font-size: 12px;padding-top:10px;"></div>
 	<script type="text/javascript" src="js/preprocess.js"></script>  
 
 </body>

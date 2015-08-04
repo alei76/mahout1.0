@@ -103,6 +103,30 @@ public class CloudAction extends ActionSupport {
 			map.put("msg", algorithm+"任务启动失败！");
 		}
 		Utils.write2PrintWriter(JSON.toJSONString(map));
+		return;
+	}
+	
+	/**
+	 * 读取HDFS txt文件
+	 */
+	public void readtxt(){
+		// arg1:input, arg2:file lines
+		Map<String ,Object> map = new HashMap<String,Object>();
+		String txt =null;
+		try{
+			txt = HUtils.readTxt(arg1, arg2, "<br>");
+			txt ="文件的内容是:<br>"+txt;
+			map.put("flag", "true");
+			map.put("return_show", "readtxt_return");
+			map.put("return_txt", txt);
+		}catch(Exception e){
+			e.printStackTrace();
+			map.put("flag", "false");
+			map.put("monitor", "false");
+			map.put("msg", arg1+"读取失败！");
+		}
+		Utils.write2PrintWriter(JSON.toJSONString(map));
+		return ;
 	}
 
 	

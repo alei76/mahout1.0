@@ -45,13 +45,13 @@ $(function(){
 	
 	
 	// ============ readtxt
-	$('#upload_clustering_submit').bind('click', function(){
-		var select_value=$('#clustering_select').combobox("getValue");;
-		var algorithm='clustering';
+	$('#readtxt_submit').bind('click', function(){
+		var select_value=$('#readtxt_select').combobox("getValue");;
+		var input=$('#readtxt_input').val();
 		// 弹出进度框
-		popupProgressbar('数据上传','数据上传中...',1000);
+		popupProgressbar('提示','数据读取中...',1000);
 		// ajax 异步提交任务
-		callByAJax('cloud/cloud_upload.action',{arg1:select_value,arg2:algorithm,arg3:"initial"});
+		callByAJax('cloud/cloud_readtxt.action',{arg2:select_value,arg1:input});
 	});
 	// ============ readtxt
 	
