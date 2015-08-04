@@ -37,10 +37,10 @@
 			}
 		},{
 			"id":1220,
-			"text":"文件去重",
+			"text":"文件查看",
 			"attributes":{
 				"folder":"0",
-				"url":"preprocess/deduplicate.jsp"
+				"url":"preprocess/readtxt.jsp"
 			}
 			
 		},{
@@ -283,7 +283,7 @@
 		}]
 	},{
 		"id":20,
-		"text":"推荐MR",
+		"text":"推荐 MR",
 		"attributes":{
 			"folder":"1"
 		},
@@ -362,7 +362,7 @@
 		}]
 	},{
 		"id":16,
-		"text":"分类MR",
+		"text":"分类 MR",
 		"attributes":{
 			"folder":"1"
 		},

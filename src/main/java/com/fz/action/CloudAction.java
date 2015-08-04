@@ -3,6 +3,7 @@
  */
 package com.fz.action;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -49,6 +50,29 @@ public class CloudAction extends ActionSupport {
 	
 	
 	/**
+	 * 数据上传
+	 */
+	public void upload(){
+		Map<String ,Object> map = new HashMap<String,Object>();
+		
+		if(arg3!=null&& "initial".equals(arg3)){// initial上传
+			// arg1-> select_value, arg2->algorithm ;arg3->'initial'
+			String filename = arg1;
+			arg1=HUtils.LOCALPRE+File.separator+arg2+File.separator+filename;
+			arg1 = Utils.getRootPathBasedPath(arg1);
+			arg2=HUtils.HDFSPRE+"/"+algorithm+"/"+filename;
+		}
+		
+		//  arg1-> input (local), arg2-> hdfs
+		
+		map = HUtils.upload(arg1, arg2);
+		
+		Utils.write2PrintWriter(JSON.toJSONString(map));
+		return ;
+	}
+	
+	
+	/**
 	 * 提交MR任务
 	 */
 	public void submitJob(){	
@@ -83,7 +107,7 @@ public class CloudAction extends ActionSupport {
 
 	
 	/**
-	 * 快速聚类--执行聚类
+	 * 提交变jobnum的任务，暂未添加
 	 * 
 	 */
 	public void runCluster2(){

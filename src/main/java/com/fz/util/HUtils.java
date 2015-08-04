@@ -58,6 +58,9 @@ public class HUtils {
 
 	private static long jobStartTime = 0L;// 使用 System.currentTimeMillis() 获得
 	private static JobClient jobClient = null;
+	
+	public static final String HDFSPRE= "/user/root";
+	public static final String LOCALPRE= "WEB-INF/classes/data";
 
 	public static Configuration getConf() {
 
@@ -221,6 +224,7 @@ public class HUtils {
 
 	/**
 	 * 上传本地文件到HFDS
+	 * 如果hdfs文件存在则覆盖
 	 * 
 	 * @param localPath
 	 * @param hdfsPath
@@ -241,6 +245,7 @@ public class HUtils {
 			return ret;
 		}
 		ret.put("flag", "true");
+		ret.put("msg", "HFDS:'"+hdfsPath+"'");
 		return ret;
 	}
 

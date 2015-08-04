@@ -32,6 +32,9 @@ function callByAJax(url,data_){
 			var retMsg;
 			if("true"==data.flag){
 				retMsg='操作成功！';
+				if(typeof data.msg !="undefined"){
+					retMsg=retMsg+data.msg;
+				}
 			}else{
 				retMsg='操作失败！失败原因：'+data.msg;
 			}
