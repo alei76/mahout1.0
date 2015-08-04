@@ -43,6 +43,9 @@ import com.fz.model.CurrentJobInfo;
  */
 public class HUtils {
 
+	
+	private static boolean RUNNINGJOBERROR = false;// 运行任务中是否出现错误
+	
 	static final String DOWNLOAD_EXTENSION = ".dat";
 	private static Configuration conf = null;
 	private static FileSystem fs = null;
@@ -196,23 +199,11 @@ public class HUtils {
 	 * @param url
 	 * @return fs.defaultFs+url
 	 */
-	public static String getHDFSPath(String url) {
+	public static Path getPath(String url) {
 
-		return Utils.getKey("fs.defaultFS", flag) + url;
+		return new Path(url);
 	}
-	/**
-	 * 获得Path路径
-	 * 如果url包含hdfs:// ，那么flag使用true，否则flag使用false
-	 * @param url
-	 * @param flag
-	 * @return
-	 */
-	public static Path getHDFSPath(String url,String flag) {
-		if("true".equals(flag)){
-			return new Path(url);
-		}
-		return new Path(getHDFSPath(url));
-	}
+	
 	/**
 	 * use the oath distance
 	 * 
@@ -260,7 +251,14 @@ public class HUtils {
 	 * @return
 	 */
 	public static boolean delete(String hdfsFolder) {
-		return false;
+		try {
+			getFs().delete(getPath(hdfsFolder), true);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 	/**
@@ -406,7 +404,7 @@ public class HUtils {
 	 */
 	public static Map<Object, Object> readSeq(String input, int k) {
 		Map<Object,Object> map= new HashMap<Object,Object>();
-		Path path = HUtils.getHDFSPath(input,"false");
+		Path path = HUtils.getPath(input);
 		Configuration conf = HUtils.getConf();
 		SequenceFile.Reader reader = null;
 		try {
@@ -473,7 +471,7 @@ public class HUtils {
 	public static String getFolderInfo(String folder,String flag) throws FileNotFoundException, IOException{
 		StringBuffer buff = new StringBuffer();
 		FileSystem fs = getFs();
-		Path path = getHDFSPath(folder, flag);
+		Path path = getPath(folder);
 		
 		FileStatus[] files = fs.listStatus(path);
 		
@@ -500,7 +498,7 @@ public class HUtils {
 	 */
 	public static  int getFolderFilesNum(String folder,String flag) throws FileNotFoundException, IOException{
 		FileSystem fs = getFs();
-		Path path = getHDFSPath(folder, flag);
+		Path path = getPath(folder);
 		
 		FileStatus[] files = fs.listStatus(path);
 		return files.length;
@@ -514,7 +512,7 @@ public class HUtils {
 	 */
 	public static void clearCenter(String output) throws FileNotFoundException, IOException {
 		
-		FileStatus[] fss = getFs().listStatus(HUtils.getHDFSPath(output, "false"));
+		FileStatus[] fss = getFs().listStatus(HUtils.getPath(output));
 		
 		for(FileStatus f:fss){
 			if(f.toString().contains("iter_0")){
@@ -523,6 +521,20 @@ public class HUtils {
 			getFs().delete(f.getPath(), true);
 			Utils.simpleLog("删除文件"+f.getPath().toString()+"!");
 		}
+	}
+
+	/**
+	 * @return the rUNNINGJOBERROR
+	 */
+	public static boolean isRUNNINGJOBERROR() {
+		return RUNNINGJOBERROR;
+	}
+
+	/**
+	 * @param rUNNINGJOBERROR the rUNNINGJOBERROR to set
+	 */
+	public static void setRUNNINGJOBERROR(boolean rUNNINGJOBERROR) {
+		RUNNINGJOBERROR = rUNNINGJOBERROR;
 	}
 
 

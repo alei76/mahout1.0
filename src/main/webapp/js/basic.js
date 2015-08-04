@@ -27,9 +27,8 @@ function callByAJax(url,data_){
 		dataType:"json",
 		context : document.body,
 		success : function(data) {
-//			$.messager.progress('close');
 			closeProgressbar();
-			console.info("data.flag:"+data.flag);
+			console.info("close the progressbar,flag:"+data.flag);
 			var retMsg;
 			if("true"==data.flag){
 				retMsg='操作成功！';
@@ -46,13 +45,22 @@ function callByAJax(url,data_){
 				layout_center_addTabFun({
 					title : 'MR算法监控',
 					closable : true,
-					// iconCls : node.iconCls,
-					href : 'cluster/monitor_one.jsp'
+					href : 'monitor/monitor.jsp'
 				});
 			}
 			
 		}
 	});
+}
+
+function exitsMRmonitor(){
+	var t = $('#layout_center_tabs');
+	if (t.tabs('exists', "MR算法监控")) {
+		$.messager.alert("操作提示", "请先关闭MR监控页面！","info"); 
+		return true;
+	} else {
+		return false;
+	}
 }
 
 function layout_center_addTabFun(opts) {

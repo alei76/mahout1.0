@@ -3,9 +3,11 @@
  */
 package com.fz.mahout;
 
+import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.util.ToolRunner;
-import org.apache.mahout.math.hadoop.similarity.cooccurrence.RowSimilarityJob;
-import org.apache.mahout.utils.SplitInput;
+import org.apache.mahout.cf.taste.hadoop.als.DatasetSplitter;
+
+import com.fz.util.TestHUtils;
 
 /**
  * @author fansy
@@ -18,19 +20,21 @@ public class MahoutDriverTest {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
+		TestHUtils.set();
 		
+		testDatasetSplitter();
+	}
+	
+	public static void testDatasetSplitter() throws Exception{
 		String[] arg= {
-				"-i","input/test.txt",
-				"-mro","output",
-				"-tr","train",
-				"-te","test",
-				"-sp","20",
-				"-rp","20",
-				"-c","UTF-8",
-				"-xm","mapreduce"
+				"-i","/user/root/user.txt",
+				"-o","recommenders/train_test_output",
+				"-t","0.9",
+				"-p","0.1"
 		};
-		
-		ToolRunner.run(new SplitInput(), arg);
+		TestHUtils.getFs().delete(new Path("temp"), true);
+		TestHUtils.getFs().delete(new Path("recommenders/train_test_output"), true);
+		ToolRunner.run(TestHUtils.getConf(), new DatasetSplitter(),arg);
 	}
 
 }

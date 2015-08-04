@@ -23,7 +23,7 @@
 		}]
 	},{
 		"id":12,
-		"text":"数据生成",
+		"text":"数据生成查看",
 		"state":"closed",
 		"attributes":{
 				"folder":"1"
@@ -237,6 +237,66 @@
 			}
 		}]
 	},{
+		"id":17,
+		"text":"SGD MR",
+		"attributes":{
+			"folder":"1"
+		},
+		"state":"closed",
+		"children":[{
+			"id":170,
+			"text":"trainlogistic",
+			"attributes":{
+				"folder":"0",
+				"url":"sgd/trainlogistic.jsp"
+			}
+		}]
+	},{
+		"id":18,
+		"text":"HMM MR",
+		"attributes":{
+			"folder":"1"
+		},
+		"state":"closed",
+		"children":[{
+			"id":180,
+			"text":"baumwelch",
+			"attributes":{
+				"folder":"0",
+				"url":"hmm/baumwelch.jsp"
+			}
+		}]
+	},{
+		"id":19,
+		"text":"Classifier Utils",
+		"attributes":{
+			"folder":"1"
+		},
+		"state":"closed",
+		"children":[{
+			"id":190,
+			"text":"cmdump",
+			"attributes":{
+				"folder":"0",
+				"url":"classifier/cmdump.jsp"
+			}
+		}]
+	},{
+		"id":20,
+		"text":"推荐MR",
+		"attributes":{
+			"folder":"1"
+		},
+		"state":"closed",
+		"children":[{
+			"id":200,
+			"text":"splitDataset",
+			"attributes":{
+				"folder":"0",
+				"url":"recommenders/splitDataset.jsp"
+			}
+		}]
+	},{
 		"id":15,
 		"text":"聚类 MR",
 		"attributes":{
@@ -313,66 +373,6 @@
 			"attributes":{
 				"folder":"0",
 				"url":"classification/trainnb.jsp"
-			}
-		}]
-	},{
-		"id":17,
-		"text":"SGD MR",
-		"attributes":{
-			"folder":"1"
-		},
-		"state":"closed",
-		"children":[{
-			"id":170,
-			"text":"trainlogistic",
-			"attributes":{
-				"folder":"0",
-				"url":"sgd/trainlogistic.jsp"
-			}
-		}]
-	},{
-		"id":18,
-		"text":"HMM MR",
-		"attributes":{
-			"folder":"1"
-		},
-		"state":"closed",
-		"children":[{
-			"id":180,
-			"text":"baumwelch",
-			"attributes":{
-				"folder":"0",
-				"url":"hmm/baumwelch.jsp"
-			}
-		}]
-	},{
-		"id":19,
-		"text":"Classifier Utils",
-		"attributes":{
-			"folder":"1"
-		},
-		"state":"closed",
-		"children":[{
-			"id":190,
-			"text":"cmdump",
-			"attributes":{
-				"folder":"0",
-				"url":"classifier/cmdump.jsp"
-			}
-		}]
-	},{
-		"id":20,
-		"text":"推荐MR",
-		"attributes":{
-			"folder":"1"
-		},
-		"state":"closed",
-		"children":[{
-			"id":200,
-			"text":"splitDataset",
-			"attributes":{
-				"folder":"0",
-				"url":"recommenders/splitDataset.jsp"
 			}
 		}]
 	}]
