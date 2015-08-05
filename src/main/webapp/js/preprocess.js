@@ -10,37 +10,51 @@ $(function(){
 		// 弹出进度框
 		popupProgressbar('数据上传','数据上传中...',1000);
 		// ajax 异步提交任务
-		callByAJax('cloud/cloud_upload.action',{arg1:input,arg2:output});
+		callByAJax('cloud/cloud_submitJobNotMR.action',{algorithm:'Upload',
+			arg1:input,arg2:output});
 	});
-	
 	
 	$('#upload_recommenders_submit').bind('click', function(){
 		var select_value=$('#recommenders_select').combobox("getValue");;
-		var algorithm='recommenders';
+		var algorithm_type='recommenders';
 		// 弹出进度框
 		popupProgressbar('数据上传','数据上传中...',1000);
 		// ajax 异步提交任务
-		callByAJax('cloud/cloud_upload.action',{arg1:select_value,arg2:algorithm,arg3:"initial"});
+		callByAJax('cloud/cloud_submitJobNotMR.action',{algorithm:'Upload',
+			arg1:select_value,arg2:algorithm_type,arg3:"initial"});
 	});
 	
 	$('#upload_classification_submit').bind('click', function(){
 		var select_value=$('#classification_select').combobox("getValue");;
-		var algorithm='classification';
+		var algorithm_type='classification';
 		// 弹出进度框
 		popupProgressbar('数据上传','数据上传中...',1000);
 		// ajax 异步提交任务
-		callByAJax('cloud/cloud_upload.action',{arg1:select_value,arg2:algorithm,arg3:"initial"});
+		callByAJax('cloud/cloud_submitJobNotMR.action',{algorithm:'Upload',
+			arg1:select_value,arg2:algorithm_type,arg3:"initial"});
 	});
 	
 	$('#upload_clustering_submit').bind('click', function(){
 		var select_value=$('#clustering_select').combobox("getValue");;
-		var algorithm='clustering';
+		var algorithm_type='clustering';
 		// 弹出进度框
 		popupProgressbar('数据上传','数据上传中...',1000);
 		// ajax 异步提交任务
-		callByAJax('cloud/cloud_upload.action',{arg1:select_value,arg2:algorithm,arg3:"initial"});
+		callByAJax('cloud/cloud_submitJobNotMR.action',{algorithm:'Upload',
+			arg1:select_value,arg2:algorithm_type,arg3:"initial"});
 	});
-	//=======upload
+	
+	$('#upload_utils_submit').bind('click', function(){
+		var select_value=$('#utils_select').combobox("getValue");;
+		var algorithm_type='utils';
+		// 弹出进度框
+		popupProgressbar('数据上传','数据上传中...',1000);
+		// ajax 异步提交任务
+		callByAJax('cloud/cloud_submitJobNotMR.action',{algorithm:'Upload',
+			arg1:select_value,arg2:algorithm_type,arg3:"initial"});
+	});
+	
+	//=======upload ===================
 	
 	
 	
@@ -51,8 +65,23 @@ $(function(){
 		// 弹出进度框
 		popupProgressbar('提示','数据读取中...',1000);
 		// ajax 异步提交任务
-		callByAJax('cloud/cloud_readtxt.action',{arg2:select_value,arg1:input});
+		callByAJax('cloud/cloud_submitJobNotMR.action',{algorithm:'ReadTxt',arg1:input,arg2:select_value});
 	});
-	// ============ readtxt
+	// ============ readtxt =================
+	
+	
+	// ============ describe
+	$('#describe_submit').bind('click', function(){
+		var select_value=$('#describe_select').combobox("getValue");;
+		var input=$('#describe_input').val();
+		var output=$('#describe_output').val();
+		var description=$('#describe_description').val();
+		// 弹出进度框
+		popupProgressbar('提示','数据读取中...',1000);
+		// ajax 异步提交任务
+		callByAJax('cloud/cloud_submitJobNotMR.action',{algorithm:'DescribeTest'
+			,arg1:input,arg2:output,arg3:description,arg4:select_value});
+	});
+	// ============ describe ================
 	
 });

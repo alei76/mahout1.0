@@ -39,11 +39,14 @@ function callByAJax(url,data_){
 					$(return_id).html(data.return_txt);
 //					console.info($(return_id));
 					console.info('defined:'+data.return_show);
-				}else{
-					console.info('undefined');
 				}
 			}else{
-				retMsg='操作失败！失败原因：'+data.msg;
+				retMsg='操作失败！';
+				if(typeof data.return_show !="undefined"){// 读取文件
+					var return_id = "#"+data.return_show+"";
+					$(return_id).html(data.msg);
+					
+				}
 			}
 			$.messager.show({
 				title : '提示',

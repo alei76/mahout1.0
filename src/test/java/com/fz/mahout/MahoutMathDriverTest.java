@@ -10,13 +10,14 @@ import org.apache.mahout.cf.taste.hadoop.als.DatasetSplitter;
 import com.fz.util.TestHUtils;
 
 /**
+ * math 
  * @author fansy
  * @date 2015-7-31
  */
-public class MahoutDriverTest {
-
+public class MahoutMathDriverTest {
+  
 	/**
-	 * @param args
+	 * @param args 
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
@@ -25,6 +26,11 @@ public class MahoutDriverTest {
 		testDatasetSplitter();
 	}
 	
+	
+	/**
+	 * recommenders/ datasetsplitter
+	 * @throws Exception
+	 */
 	public static void testDatasetSplitter() throws Exception{
 		String[] arg= {
 				"-i","/user/root/user.txt",
@@ -36,5 +42,7 @@ public class MahoutDriverTest {
 		TestHUtils.getFs().delete(new Path("recommenders/train_test_output"), true);
 		ToolRunner.run(TestHUtils.getConf(), new DatasetSplitter(),arg);
 	}
+	
+	
 
 }

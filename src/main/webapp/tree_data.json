@@ -83,7 +83,7 @@
 	},{
 		"id":13,
 		"text":"工具类MR",
-		"state":"closed",
+		"state":"open",
 		"attributes":{
 				"folder":"1"
 		},
@@ -177,6 +177,48 @@
 			"attributes":{
 				"folder":"0",
 				"url":"utils/seqwiki.jsp"
+			}
+		},{
+			"id":1394,
+			"text":"seqmailarchives",
+			"attributes":{
+				"folder":"0",
+				"url":"utils/seqmailarchives.jsp"
+			}
+		},{
+			"id":1395,
+			"text":"lucene2seq",
+			"attributes":{
+				"folder":"0",
+				"url":"utils/lucene2seq.jsp"
+			}
+		},{
+			"id":1396,
+			"text":"concatmatrices",
+			"attributes":{
+				"folder":"0",
+				"url":"utils/concatmatrices.jsp"
+			}
+		},{
+			"id":1397,
+			"text":"resplit",
+			"attributes":{
+				"folder":"0",
+				"url":"utils/resplit.jsp"
+			}
+		},{
+			"id":1398,
+			"text":"qualcluster",
+			"attributes":{
+				"folder":"0",
+				"url":"utils/qualcluster.jsp"
+			}
+		},{
+			"id":1399,
+			"text":"describe",
+			"attributes":{
+				"folder":"0",
+				"url":"utils/describe.jsp"
 			}
 		}]
 	},{

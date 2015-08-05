@@ -208,6 +208,14 @@ public class HUtils {
 	}
 
 	/**
+	 * 获得hdfs全路径
+	 * @param url
+	 * @return
+	 */
+	public static String getFullHDFS(String url){
+		return Utils.getKey("fs.defaultFS", flag) + url;
+	}
+	/**
 	 * 上传本地文件到HFDS
 	 * 如果hdfs文件存在则覆盖
 	 * 
@@ -220,8 +228,10 @@ public class HUtils {
 		FileSystem fs = getFs();
 		Path src = new Path(localPath);
 		Path dst = new Path(hdfsPath);
+		ret.put("return_show", "upload_return");
 		try {
 			fs.copyFromLocalFile(src, dst);
+			ret.put("return_txt", localPath+"上传至"+hdfsPath+"成功");
 			Utils.simpleLog(localPath+"上传至"+hdfsPath+"成功");
 		} catch (Exception e) {
 			ret.put("flag", "false");

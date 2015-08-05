@@ -3,7 +3,6 @@
  */
 package com.fz.action;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +13,7 @@ import org.springframework.stereotype.Component;
 import com.alibaba.fastjson.JSON;
 import com.fz.model.CurrentJobInfo;
 import com.fz.thread.RunnableWithArgs;
+import com.fz.thread.not.INotMRJob;
 import com.fz.util.HUtils;
 import com.fz.util.Utils;
 import com.opensymphony.xwork2.ActionSupport;
@@ -31,12 +31,12 @@ public class CloudAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String algorithm; // MR算法
+	private String algorithm; // MR或非MR算法, 实例化的类名
 	private String jobnums; // MR算法Job的个数
 	
 	
 	// 算法页面参数,每个页面不超过11个参数,如果超过，则需要修改
-	private String arg1;
+	private String arg1; 
 	private String arg2;
 	private String arg3;
 	private String arg4;
@@ -47,33 +47,10 @@ public class CloudAction extends ActionSupport {
 	private String arg9;
 	private String arg10;
 	private String arg11;
-	
-	
-	/**
-	 * 数据上传
-	 */
-	public void upload(){
-		Map<String ,Object> map = new HashMap<String,Object>();
 		
-		if(arg3!=null&& "initial".equals(arg3)){// initial上传
-			// arg1-> select_value, arg2->algorithm ;arg3->'initial'
-			String filename = arg1;
-			arg1=HUtils.LOCALPRE+File.separator+arg2+File.separator+filename;
-			arg1 = Utils.getRootPathBasedPath(arg1);
-			arg2=HUtils.HDFSPRE+"/"+algorithm+"/"+filename;
-		}
-		
-		//  arg1-> input (local), arg2-> hdfs
-		
-		map = HUtils.upload(arg1, arg2);
-		
-		Utils.write2PrintWriter(JSON.toJSONString(map));
-		return ;
-	}
-	
-	
 	/**
 	 * 提交MR任务
+	 * 算法具体参数意思对照jsp页面理解，每个实体类会把arg1~arg11 转换为实际的意思
 	 */
 	public void submitJob(){	
 		Map<String ,Object> map = new HashMap<String,Object>();
@@ -86,7 +63,8 @@ public class CloudAction extends ActionSupport {
 			HUtils.JOBNUM=Integer.parseInt(jobnums);
 			// 2. 使用Thread的方式启动一组MR任务
 			// 2.1 生成Runnable接口
-			RunnableWithArgs runJob = Utils.getRunnableByName(algorithm);
+			RunnableWithArgs runJob = (RunnableWithArgs) Utils.getClassByName(
+					Utils.THREADPACKAGES+algorithm);
 			// 2.2 设置参数
 			runJob.setArgs(new String[]{arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11});
 			// 2.3 启动Thread
@@ -105,30 +83,26 @@ public class CloudAction extends ActionSupport {
 		Utils.write2PrintWriter(JSON.toJSONString(map));
 		return;
 	}
-	
+
 	/**
-	 * 读取HDFS txt文件
+	 * 提交非MR的任务
+	 * 算法具体参数意思对照jsp页面理解，每个实体类会把arg1~arg11 转换为实际的意思
+	 * @throws ClassNotFoundException 
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
 	 */
-	public void readtxt(){
-		// arg1:input, arg2:file lines
+	public void submitJobNotMR() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		
 		Map<String ,Object> map = new HashMap<String,Object>();
-		String txt =null;
-		try{
-			txt = HUtils.readTxt(arg1, arg2, "<br>");
-			txt ="文件的内容是:<br>"+txt;
-			map.put("flag", "true");
-			map.put("return_show", "readtxt_return");
-			map.put("return_txt", txt);
-		}catch(Exception e){
-			e.printStackTrace();
-			map.put("flag", "false");
-			map.put("monitor", "false");
-			map.put("msg", arg1+"读取失败！");
-		}
+		INotMRJob runJob = (INotMRJob) Utils.getClassByName(
+				Utils.THREADNOTPACKAGES+algorithm);
+		// 2.2 设置参数
+		runJob.setArgs(new String[]{arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11});
+		map= runJob.runJob();
+		
 		Utils.write2PrintWriter(JSON.toJSONString(map));
 		return ;
 	}
-
 	
 	/**
 	 * 提交变jobnum的任务，暂未添加

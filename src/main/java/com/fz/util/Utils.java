@@ -20,7 +20,6 @@ import org.springframework.web.context.ContextLoader;
 
 import com.fz.model.ObjectInterface;
 import com.fz.service.DBService;
-import com.fz.thread.RunnableWithArgs;
 
 /**
  * 工具类
@@ -33,6 +32,9 @@ public class Utils {
 	
 	//
 	public static String baseServicePacakges="com.fz.service.*";
+	public static final String THREADPACKAGES ="com.fz.thread.";
+	public static final String THREADNOTPACKAGES ="com.fz.thread.not.";
+	
 	
 //	private static Map<String,String> HADOOPCONSTANTS=new HashMap<String,String>();
 	private static ResourceBundle resb = null;
@@ -188,9 +190,9 @@ public class Utils {
 	 * @throws InstantiationException 
 	 * @throws ClassNotFoundException 
 	 */
-	public static RunnableWithArgs getRunnableByName(String thread) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		Class<?> cl = Class.forName(getThreadPackages(thread));
-		RunnableWithArgs o = (RunnableWithArgs)cl.newInstance();
+	public static Object getClassByName(String thread) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		Class<?> cl = Class.forName(thread);
+		Object o = cl.newInstance();
 		return o;
 	}
 	
