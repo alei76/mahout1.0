@@ -45,6 +45,7 @@ public class HUtils {
 
 	
 	private static boolean RUNNINGJOBERROR = false;// 运行任务中是否出现错误
+	private static boolean ALLJOBSFINISHED=false; // 循环MR任务所有任务成功标志位；
 	
 	static final String DOWNLOAD_EXTENSION = ".dat";
 	private static Configuration conf = null;
@@ -570,6 +571,20 @@ public class HUtils {
 	 */
 	public static void setRUNNINGJOBERROR(boolean rUNNINGJOBERROR) {
 		RUNNINGJOBERROR = rUNNINGJOBERROR;
+	}
+
+	/**
+	 * @return the aLLJOBSFINISHED
+	 */
+	public static boolean isALLJOBSFINISHED() {
+		return ALLJOBSFINISHED;
+	}
+
+	/**
+	 * @param aLLJOBSFINISHED the aLLJOBSFINISHED to set
+	 */
+	public static void setALLJOBSFINISHED(boolean aLLJOBSFINISHED) {
+		ALLJOBSFINISHED = aLLJOBSFINISHED;
 	}
 
 

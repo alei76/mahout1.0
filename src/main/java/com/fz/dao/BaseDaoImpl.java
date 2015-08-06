@@ -180,7 +180,6 @@ public class BaseDaoImpl<T> implements BaseDAO<T> {
 
 	@Override
 	public Integer saveBatch(List<T> lists) {
-		// TODO Auto-generated method stub
 		return null;
 	}
   

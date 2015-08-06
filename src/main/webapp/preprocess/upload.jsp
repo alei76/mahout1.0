@@ -8,8 +8,8 @@
 	 
 		<table>
 		<!--  统一命名：
-			上传本地文件：WEB-INF/classes/data/<algorithm_type>/<algorithm>.txt
-			上传HDFS文件：/user/root/<algorithm_type>/<algorithm>/input.txt
+			上传本地文件：WEB-INF/classes/data/<algorithm_type>/<algorithm>.<extendtion>
+			上传HDFS文件：/user/root/<algorithm_type>/<algorithm>/input.<extendtion>
 		 -->
 			<tr>
 				<td><label for="name">本地路径:</label>
@@ -28,13 +28,26 @@
 				<td><a id="upload_submit" class="easyui-linkbutton"
 					data-options="iconCls:'icon-door_in'">上传</a></td>
 			</tr>
-			<tr><td></td></tr>
+			
+			<tr>
+				<td>Prepare数据初始化</td>
+				<td><select id="prepare_select" class="easyui-combobox" name="dept"
+					style="width:200px;">
+						<option value="inputdriver.txt">inputdriver</option>
+						<option value="arff_vector.arff">arff_vector</option> 
+						<option value="split.txt">split</option>
+
+				</select></td>
+				<td><a id="upload_prepare_submit" class="easyui-linkbutton"
+					data-options="iconCls:'icon-door_in'">数据初始化</a>
+				</td>
+			</tr>
 			
 			<tr>
 				<td>推荐MR数据初始化</td>
 				<td><select id="recommenders_select" class="easyui-combobox" name="dept"
 					style="width:200px;">
-						<option value="splitDataset">splitDataset</option>
+						<option value="splitDataset.txt">splitDataset</option>
 						<option value="evaluateFactorization">evaluateFactorization</option> 
 						<option value="itemsimilarity">itemsimilarity</option>
 
@@ -62,7 +75,7 @@
 				<td>聚类MR数据初始化</td>
 				<td><select id="clustering_select" class="easyui-combobox" name="dept"
 					style="width:200px;">
-						<option value="kmeans">kmeans</option>
+						<option value="kmeans.seq">kmeans</option>
 						<option value="fkmeans">fkmeans</option> 
 						<option value="cvb">cvb</option>
 
@@ -76,9 +89,9 @@
 				<td>Utils数据初始化</td>
 				<td><select id="utils_select" class="easyui-combobox" name="dept"
 					style="width:200px;">
-						<option value="describe">describe</option>
-						<option value="fkmeans">fkmeans</option> 
-						<option value="cvb">cvb</option>
+						<option value="describe.txt">describe</option>
+						<option value="arff_vector.arff">arff_vector</option> 
+						<option value="split.txt">split</option>
 
 				</select></td>
 				<td><a id="upload_utils_submit" class="easyui-linkbutton"

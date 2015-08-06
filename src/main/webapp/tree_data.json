@@ -53,10 +53,10 @@
 			
 		},{
 			"id":123,
-			"text":"数据入库",
+			"text":"聚类数据转换",
 			"attributes":{
 				"folder":"0",
-				"url":"preprocess/resolve2db.jsp"
+				"url":"preprocess/inputdriver.jsp"
 			}
 		},{
 			"id":124,
@@ -83,7 +83,7 @@
 	},{
 		"id":13,
 		"text":"工具类MR",
-		"state":"open",
+		"state":"closed",
 		"attributes":{
 				"folder":"1"
 		},

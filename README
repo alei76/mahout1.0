@@ -4,15 +4,17 @@ Mahout1.0 MR算法集锦
 系统版本V3.0
 
 相关软件：
-Myeclipse10.0，JDK1.7，Hadoop2.6，MySQL5.6，EasyUI1.3.6，jQuery2.0，Spring4.1.3，
+Myeclipse2014，JDK1.8，Hadoop2.6，MySQL5.6，EasyUI1.3.6，jQuery2.0，Spring4.1.3，
 Hibernate4.3.1，struts2.3.1，Maven3.2.1，Mahout0.10
 
 
 0. 数据生成与查看
-   1> 数据生成：
+	1> 数据生成：
       a. DatasetSplitter 数据；
       b. Describe 数据；
 	2> 数据查看，界面及后台功能完成；
+	
+	3> 聚类数据生成；InputDriver
 	
 1. Utils
 	1>describe 完成 ；

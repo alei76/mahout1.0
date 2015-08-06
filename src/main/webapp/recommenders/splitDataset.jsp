@@ -14,7 +14,7 @@
 				</td>
 				<td><input class="easyui-validatebox" type="text"
 					id="splitDataset_input" name="input" data-options="required:true"
-					style="width:300px" value="/user/root/recommenders/dataset" /></td>
+					style="width:300px" value="/user/root/recommenders/splitDataset/input.txt" /></td>
 
 			</tr>
 			<tr>

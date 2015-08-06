@@ -20,7 +20,6 @@ public class SpringUtil implements ApplicationContextAware {
 	@SuppressWarnings("static-access")
 	public void setApplicationContext(ApplicationContext arg0)
 			throws BeansException {
-		// TODO Auto-generated method stub
 		this.ac=arg0;
 		
 	}

@@ -108,19 +108,26 @@ public class CloudAction extends ActionSupport {
 	 * 提交变jobnum的任务，暂未添加
 	 * 
 	 */
-	public void runCluster2(){
+	public void submitIterMR(){
 		Map<String ,Object> map = new HashMap<String,Object>();
 		try {
 			//提交一个Hadoop MR任务的基本流程
 			// 1. 设置提交时间阈值,并设置这组job的个数
 			//使用当前时间即可,当前时间往前10s，以防服务器和云平台时间相差
 			HUtils.setJobStartTime(System.currentTimeMillis()-10000);// 
-			// 由于不知道循环多少次完成，所以这里设置为2，每次循环都递增1
-			// 当所有循环完成的时候，就该值减去2即可停止监控部分的循环
-			HUtils.JOBNUM=2;
+			// 由于不知道循环多少次完成，所以这里设置为最大值，
+			// 当所有MR完成的时候，在监控代码处重新设置JOBNUM；
+			HUtils.setALLJOBSFINISHED(false);
+			HUtils.JOBNUM=Integer.parseInt(jobnums);
 			
 			// 2. 使用Thread的方式启动一组MR任务
-//			new Thread(new RunCluster2(input, output,delta, record)).start();
+			// 2.1 生成Runnable接口
+			RunnableWithArgs runJob = (RunnableWithArgs) Utils.getClassByName(
+					Utils.THREADPACKAGES+algorithm);
+			// 2.2 设置参数
+			runJob.setArgs(new String[]{arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11});
+			// 2.3 启动Thread
+			new Thread(runJob).start();
 			// 3. 启动成功后，直接返回到监控，同时监控定时向后台获取数据，并在前台展示；
 			
 			map.put("flag", "true");
@@ -129,7 +136,7 @@ public class CloudAction extends ActionSupport {
 			e.printStackTrace();
 			map.put("flag", "false");
 			map.put("monitor", "false");
-			map.put("msg", e.getMessage());
+			map.put("msg", "任务启动失败！");
 		}
 		Utils.write2PrintWriter(JSON.toJSONString(map));
 	}
@@ -154,6 +161,11 @@ public class CloudAction extends ActionSupport {
     		// true 所有任务完成
     		// false 任务正在运行
     		// error 某一个任务运行失败，则不再监控
+    		
+    		// 由Runnable设置任务是否运行完成，如果任务运行完成，那么就设置标志位，然后再次设置JOBNUM
+    		if(HUtils.isALLJOBSFINISHED()){
+    			HUtils.JOBNUM=currJobList.size();
+    		}
     		
     		if(currJobList.size()>=HUtils.JOBNUM){// 如果返回的list有JOBNUM个，那么才可能完成任务
     			if("success".equals(HUtils.hasFinished(currJobList.get(currJobList.size()-1)))){

@@ -45,8 +45,18 @@ $(function(){
 	});
 	
 	$('#upload_utils_submit').bind('click', function(){
-		var select_value=$('#utils_select').combobox("getValue");;
+		var select_value=$('#utils_select').combobox("getValue");
 		var algorithm_type='utils';
+		// 弹出进度框
+		popupProgressbar('数据上传','数据上传中...',1000);
+		// ajax 异步提交任务
+		callByAJax('cloud/cloud_submitJobNotMR.action',{algorithm:'Upload',
+			arg1:select_value,arg2:algorithm_type,arg3:"initial"});
+	});
+	
+	$('#upload_prepare_submit').bind('click', function(){
+		var select_value=$('#prepare_select').combobox("getValue");;
+		var algorithm_type='prepare';
 		// 弹出进度框
 		popupProgressbar('数据上传','数据上传中...',1000);
 		// ajax 异步提交任务
@@ -69,6 +79,19 @@ $(function(){
 	});
 	// ============ readtxt =================
 	
+	// ============ inputdriver
+	$('#inputdriver_submit').bind('click', function(){
+		var select_value=$('#inputdriver_select').combobox("getValue");;
+		var input=$('#inputdriver_input').val();
+		var output=$('#inputdriver_output').val();
+		// 弹出进度框
+		popupProgressbar('提示','数据转换中...',1000);
+		// ajax 异步提交任务
+		callByAJax('cloud/cloud_submitJob.action',{algorithm:'InputDriverRunnable',
+			jobnums:1,arg1:input,
+			arg2:output,arg3:select_value});
+	});
+	// ============ readtxt =================
 	
 	// ============ describe
 	$('#describe_submit').bind('click', function(){
