@@ -54,6 +54,7 @@ public class KMeansDriverRunnable implements RunnableWithArgs {
 		try {
 			HUtils.delete(output);
 			HUtils.delete("temp");
+			HUtils.delete(clusters);
 
 			int ret = ToolRunner.run(HUtils.getConf()	,new KMeansDriver()	, args);
 			if(ret==0){// 所有任务运行完成
@@ -63,7 +64,7 @@ public class KMeansDriverRunnable implements RunnableWithArgs {
 			e.printStackTrace();
 			// 任务中，报错，需要在任务监控界面体现出来
 			HUtils.setRUNNINGJOBERROR(true);
-			Utils.simpleLog("InputDriver任务错误！");
+			Utils.simpleLog("KMeansDriver任务错误！");
 		}
 	}
 

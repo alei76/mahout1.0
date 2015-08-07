@@ -10,7 +10,7 @@
 			<tr>
 				<td><label for="name">HDFS输入路径:</label>
 				</td>
-				<td><input class="easyui-validatebox" type="text" value="/user/root/clustering/kmeans/input.txt"
+				<td><input class="easyui-validatebox" type="text" value="/user/root/clustering/kmeans/input.seq"
 					id="kmeans_input" data-options="required:true" style="width:300px" />
 				</td>
 			</tr>
@@ -72,11 +72,11 @@
 				<td>
 				<select id="kmeans_distanceMeasure" class="easyui-combobox" name="dept"
 					style="width:200px;">
-						<option value="SquaredEuclidean">SquaredEuclidean</option>
-						<option value="Euclidean">Euclidean</option>
-						<option value="Manhattan">Manhattan</option>
-						<option value="Cosine">Cosine</option>
-						<option value="Tanimoto">Tanimoto</option>
+						<option value="org.apache.mahout.common.distance.SquaredEuclideanDistanceMeasure">SquaredEuclidean</option>
+						<option value="org.apache.mahout.common.distance.EuclideanDistanceMeasure">Euclidean</option>
+						<option value="org.apache.mahout.common.distance.ManhattanDistanceMeasure">Manhattan</option>
+						<option value="org.apache.mahout.common.distance.CosineDistanceMeasure">Cosine</option>
+						<option value="org.apache.mahout.common.distance.TanimotoDistanceMeasure">Tanimoto</option>
 						<option value="">未完待续。。。</option>
 				</select>
 				</td>

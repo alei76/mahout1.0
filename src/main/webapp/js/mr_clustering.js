@@ -15,11 +15,16 @@ $(function(){
 		var clustering=$('#kmeans_clustering').combobox("getValue");
 		var distanceMeasure=$('#kmeans_distanceMeasure').combobox("getValue");
 		
+		var jobnums_=parseInt(k); // 一共的MR个数
+		if("true"==clustering){
+			jobnums_=jobnums_+1;
+		}
+		jobnums_=jobnums_+"";
 		// 弹出进度框
 		popupProgressbar('聚类MR','kmeans任务提交中...',1000);
 		// ajax 异步提交任务
 		
-		callByAJax('cloud/cloud_submitIterMR.action',{algorithm:"KMenasDriverRunnable",jobnums:"3",
+		callByAJax('cloud/cloud_submitIterMR.action',{algorithm:"KMeansDriverRunnable",jobnums:jobnums_,
 			arg1:input,arg2:output,arg3:clusters,arg4:k,
 			arg5:convergenceDelta,arg6:maxIter,arg7:clustering,arg8:distanceMeasure});
 		
