@@ -357,7 +357,7 @@
 			"text":"fkmeans",
 			"attributes":{
 				"folder":"0",
-				"url":"clustering/fkmeans.jsp"
+				"url":"clustering/fuzzykmeans.jsp"
 			}
 		},{
 			"id":153,

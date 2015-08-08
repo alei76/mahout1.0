@@ -76,7 +76,7 @@
 				<td><select id="clustering_select" class="easyui-combobox" name="dept"
 					style="width:200px;">
 						<option value="kmeans.seq">kmeans</option>
-						<option value="fkmeans">fkmeans</option> 
+						<option value="fuzzykmeans.seq">fuzzykmeans</option> 
 						<option value="cvb">cvb</option>
 
 				</select></td>
