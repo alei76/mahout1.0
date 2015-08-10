@@ -89,24 +89,24 @@
 		},
 		"children":[{
 			"id":131,
-			"text":"vectordump",
+			"text":"vectordump+",
 			"attributes":{
 				"folder":"0",
 				"url":"utils/vectordump.jsp"
 			}
 		},{
 			"id":132,
-			"text":"clusterdump",
+			"text":"clusterdump+",
 			"attributes":{
 				"folder":"0",
 				"url":"utils/clusterdump.jsp"
 			}
 		},{
 			"id":133,
-			"text":"seqdumper",
+			"text":"seqdump",
 			"attributes":{
 				"folder":"0",
-				"url":"utils/seqdumper.jsp"	
+				"url":"utils/seqdump.jsp"	
 			}
 		},{
 			"id":134,
@@ -117,7 +117,7 @@
 			}
 		},{
 			"id":135,
-			"text":"arff_vector",
+			"text":"arff_vector+",
 			"attributes":{
 				"folder":"0",
 				"url":"utils/arff_vector.jsp"
@@ -215,7 +215,7 @@
 			}
 		},{
 			"id":1399,
-			"text":"describe",
+			"text":"describe+",
 			"attributes":{
 				"folder":"0",
 				"url":"utils/describe.jsp"
@@ -332,7 +332,7 @@
 		"state":"closed",
 		"children":[{
 			"id":200,
-			"text":"splitDataset",
+			"text":"splitDataset+",
 			"attributes":{
 				"folder":"0",
 				"url":"recommenders/splitDataset.jsp"
@@ -347,14 +347,14 @@
 		"state":"closed",
 		"children":[{
 			"id":151,
-			"text":"kmeans",
+			"text":"kmeans+",
 			"attributes":{
 				"folder":"0",
 				"url":"clustering/kmeans.jsp"
 			}
 		},{
 			"id":152,
-			"text":"fkmeans",
+			"text":"fkmeans+",
 			"attributes":{
 				"folder":"0",
 				"url":"clustering/fuzzykmeans.jsp"

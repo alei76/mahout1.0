@@ -28,11 +28,12 @@ public class ReadTxt implements INotMRJob {
 	public Map<String, Object> runJob() {
 		Map<String ,Object> map = new HashMap<String,Object>();
 		String txt =null;
+		map.put("return_show", "readtxt_return");
 		try{
 			txt = HUtils.readTxt(input, lines, "<br>");
 			txt ="文件的内容是:<br>"+txt;
 			map.put("flag", "true");
-			map.put("return_show", "readtxt_return");
+			
 			map.put("return_txt", txt);
 		}catch(Exception e){
 			e.printStackTrace();

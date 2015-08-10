@@ -1,0 +1,22 @@
+Label bindings for Relation weather
+play|4
+temperature|1
+humidity|2
+outlook|0
+windy|3
+
+Values for nominal attributes
+3
+play
+2
+no|2
+yes|1
+outlook
+3
+rainy|3
+overcast|2
+sunny|1
+windy
+2
+TRUE|1
+FALSE|2

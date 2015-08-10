@@ -34,6 +34,7 @@ public class ReadCluster implements INotMRJob {
 	public Map<String, Object> runJob() {
 		Map<String ,Object> map = new HashMap<String,Object>();
 		String txt =null;
+		map.put("return_show", "readcluster_return");
 		try{
 			String[] args=null;
 			if("-1".equals(include_per_cluster)){
@@ -55,7 +56,7 @@ public class ReadCluster implements INotMRJob {
 			txt= cd.printClusters(null, "<br>");
 			txt ="聚类中心及数据是:<br>"+txt;
 			map.put("flag", "true");
-			map.put("return_show", "readcluster_return");
+			
 			map.put("return_txt", txt);
 		}catch(Exception e){
 			e.printStackTrace();

@@ -31,9 +31,9 @@ public class MahoutUtilsDriverTest {
 		
 //		testVectorDumper();
 //		testClusterDumper();
-		testSeqDumper();
+//		testSeqDumper();
 //		testlucene_vector();
-//		testarff_vector();
+		testarff_vector();
 //		testrowid();
 //		testsplit();
 	}
@@ -130,10 +130,14 @@ public class MahoutUtilsDriverTest {
 		// TODO arff_vector 测试失败，input需要使用本地文件，待定
 		
 		String[] arg= {
-				"-d","hdfs://node101:8020/user/root/utils/arff_vector/input.arff",
-				"-o","hdfs://node101:8020/user/root/utils/arff_vector/output",
-				"-t","hdfs://node101:8020/user/root/utils/arff_vector/dictonary.txt",
+//				"-d","hdfs://node101:8020/user/root/utils/arff_vector/input.arff",
+				"-d","D:/workspase/book/mahout1.0/src/main/resources/data/utils/arff_vector.arff",
+//				"-o","D:/workspase/book/mahout1.0/src/main/resources/data/utils/arff_vector.seq",
+				"-o","hdfs://node101:8020/user/root/utils/arff_vector/output/arff_vector.seq",
+//				"-t","hdfs://node101:8020/user/root/utils/arff_vector/dictonary.txt",
+				"-t","D:/workspase/book/mahout1.0/src/main/resources/data/utils/arff_vector.dictonary",
 				"-l","|"
+//				"--help"
 		};
 //		TestHUtils.getFs().delete(new Path("temp"), true);
 		org.apache.mahout.utils.vectors.arff.Driver.main(arg);

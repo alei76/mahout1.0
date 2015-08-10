@@ -16,11 +16,18 @@ Hibernate4.3.1，struts2.3.1，Maven3.2.1，Mahout0.10
 	
 	3> 聚类数据生成；InputDriver
 	
-	4> 聚类中心点查看，完成；
+	4> 聚类中心点查看，完成（和Utils/clusterdump一样）；
 	
+	5> Seq文件查看，完成(和Utils/seqdump一样)；
 	
 1. Utils
 	1>describe 完成 ；
+	
+	2>clusterdump 完成；
+	 
+	3> seqdump 完成；
+	
+	4> arff_vector 完成；
 	
 
 2. Math 

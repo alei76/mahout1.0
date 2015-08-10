@@ -4,6 +4,7 @@
 package com.fz.util;
 
 //import java.util.HashMap;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.NumberFormat;
@@ -204,4 +205,8 @@ public class Utils {
 		System.out.println();
 	}
 	
+	
+	public static String getFileName(String file){
+		return new File(file).getName();
+	}
 }

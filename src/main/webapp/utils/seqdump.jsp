@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
  
 <body>
-	<div style="padding-left: 30px;font-size: 20px;padding-top:10px;">序列文件查看（使用utils/seqdump）</div>  
+	<div style="padding-left: 30px;font-size: 20px;padding-top:10px;">序列文件查看</div>  
 	<br>
 	<div style="padding-left: 30px;font-size: 20px;padding-top:10px;">  
 	 

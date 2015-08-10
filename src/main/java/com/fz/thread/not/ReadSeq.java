@@ -28,6 +28,7 @@ public class ReadSeq implements INotMRJob {
 	public Map<String, Object> runJob() {
 		Map<String ,Object> map = new HashMap<String,Object>();
 		String txt =null;
+		map.put("return_show", "readseq_return");
 		try{
 			String[] args=new String[]{
 					"-i",input,
@@ -39,7 +40,7 @@ public class ReadSeq implements INotMRJob {
 			txt = sf.getRetStr();
 			txt ="序列文件的信息是:<br>"+txt;
 			map.put("flag", "true");
-			map.put("return_show", "readseq_return");
+			
 			map.put("return_txt", txt);
 		}catch(Exception e){
 			e.printStackTrace();

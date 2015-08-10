@@ -1,5 +1,7 @@
 /**
- * 预处理部分js
+ * preprocess 
+ * 和
+ * utils
  * 
  */
 $(function(){
@@ -67,10 +69,24 @@ $(function(){
 	//=======upload ===================
 	
 	
+	// ==================arff=================
+	$('#arff_submit').bind('click', function(){
+		var input=$('#arff_input').val();
+		var output=$('#arff_output').val();
+		var dictionary=$('#arff_dictionary').val();
+		var delimiter=$('#arff_delimiter').combobox("getValue");
+		// 弹出进度框
+		popupProgressbar('数据转换','Arff文件转换为序列文件中...',1000);
+		// ajax 异步提交任务
+		callByAJax('cloud/cloud_submitJobNotMR.action',{algorithm:'ArffToSeq',
+			arg1:input,arg2:output,arg3:dictionary,arg4:delimiter});
+	});
+	//===================arff===============
+	
 	
 	// ============ readtxt
 	$('#readtxt_submit').bind('click', function(){
-		var select_value=$('#readtxt_select').combobox("getValue");;
+		var select_value=$('#readtxt_select').combobox("getValue");
 		var input=$('#readtxt_input').val();
 		// 弹出进度框
 		popupProgressbar('提示','数据读取中...',1000);
