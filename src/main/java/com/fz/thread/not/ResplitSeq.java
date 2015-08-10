@@ -6,42 +6,38 @@ package com.fz.thread.not;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.fz.util.Utils;
+import org.apache.mahout.clustering.streaming.tools.ResplitSequenceFiles;
 
 /**
- * 数据转换
+ * 数据分割
  * @author fansy
  * @date 2015年8月10日
  */
-public class ArffToSeq implements INotMRJob {
+public class ResplitSeq implements INotMRJob {
 
 	private String input;
 	private String output;
-	private String delimiter;
-	private String dictionary;
+	private String files;
 	@Override
 	public void setArgs(String[] args) {
 		this.input=args[0];
 		this.output=args[1];
-		this.dictionary=args[2];
-		this.delimiter=args[3];
+		this.files=args[2];
 	}
 
 	@Override
 	public Map<String, Object> runJob() {
 		Map<String ,Object> map = new HashMap<String,Object>();
 		String txt =null;
-		map.put("return_show", "arff_return");
+		map.put("return_show", "resplitseq_return");
 		try{
 			String[] args=new String[] {
-					"-d",input,
+					"-i",input,
 					"-o",output,
-					"-t",dictionary,
-					"-l",delimiter
+					"-ns",files
 			};
-			org.apache.mahout.utils.vectors.arff.Driver.main(args);
-//			outDir + '/' + file.getName() + ".mvc"
-			txt ="文件:"+input+" 转换到HDFS文件："+output+"/"+Utils.getFileName(input)+".mvc 成功!";
+			ResplitSequenceFiles.main(args);
+			txt ="文件:"+input+" 分割到HDFS文件："+output+"-i 成功!";
 			map.put("flag", "true");
 			
 			map.put("return_txt", txt);
@@ -49,7 +45,7 @@ public class ArffToSeq implements INotMRJob {
 			e.printStackTrace();
 			map.put("flag", "false");
 			map.put("monitor", "false");
-			map.put("msg", input+"转换失败！");
+			map.put("msg", input+"分割失败！");
 		}
 		return map;
 	}

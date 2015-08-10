@@ -5,6 +5,8 @@ package com.fz.mahout;
 
 import org.apache.hadoop.fs.Path;
 import org.apache.mahout.classifier.df.tools.Describe;
+import org.apache.mahout.clustering.streaming.tools.ResplitSequenceFiles;
+import org.apache.mahout.utils.MatrixDumper;
 import org.apache.mahout.utils.SequenceFileDumper;
 import org.apache.mahout.utils.SplitInput;
 import org.apache.mahout.utils.clustering.ClusterDumper;
@@ -33,7 +35,9 @@ public class MahoutUtilsDriverTest {
 //		testClusterDumper();
 //		testSeqDumper();
 //		testlucene_vector();
-		testarff_vector();
+//		testarff_vector();
+//		testMatrixDumper();
+		testResplitSequence();
 //		testrowid();
 //		testsplit();
 	}
@@ -70,6 +74,30 @@ public class MahoutUtilsDriverTest {
 		VectorDumper.main(arg);
 		
 	}
+	
+	public static void testMatrixDumper() throws Exception{
+		// TODO MatrixDumper 测试不成功，暂未用到
+		String[] arg= {
+				"-i","/user/root/clustering/kmeans/input.seq"
+		};
+//		TestHUtils.getFs().delete(new Path("temp"), true);
+		MatrixDumper.main(arg);
+		
+	}
+	
+	public static void testResplitSequence() throws Exception{
+		// TODO MatrixDumper 测试不成功，暂未用到
+		String[] arg= {
+				"-i","/user/root/clustering/kmeans/input.seq",
+				"-o","/user/root/utils/resplitseq/split",
+				"-ns","2"
+//				"--help"
+		};
+//		TestHUtils.getFs().delete(new Path("temp"), true);
+		ResplitSequenceFiles.main(arg);
+		
+	}
+	
 	/**
 	 * clusterdumper
 	 * @throws Exception

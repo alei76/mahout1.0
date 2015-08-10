@@ -201,10 +201,10 @@
 			}
 		},{
 			"id":1397,
-			"text":"resplit",
+			"text":"resplitseq+",
 			"attributes":{
 				"folder":"0",
-				"url":"utils/resplit.jsp"
+				"url":"utils/resplitseq.jsp"
 			}
 		},{
 			"id":1398,
