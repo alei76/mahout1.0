@@ -37,7 +37,7 @@
 			}
 		},{
 			"id":1220,
-			"text":"文件查看",
+			"text":"文本文件查看",
 			"attributes":{
 				"folder":"0",
 				"url":"preprocess/readtxt.jsp"
@@ -67,10 +67,10 @@
 			}
 		},{
 			"id":1240,
-			"text":"距离计算",
+			"text":"序列文件查看",
 			"attributes":{
 				"folder":"0",
-				"url":"preprocess/caldistance.jsp"
+				"url":"preprocess/readseq.jsp"
 			}
 		},{
 			"id":125,

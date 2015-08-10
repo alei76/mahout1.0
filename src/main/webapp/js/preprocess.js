@@ -95,6 +95,17 @@ $(function(){
 	});
 	// ============ readcluster =================
 	
+	// ============ readseq
+	$('#readseq_submit').bind('click', function(){
+		var input=$('#readseq_input').val();
+		var numItems=$('#readseq_numItems').combobox("getValue");
+		// 弹出进度框
+		popupProgressbar('提示','数据读取中...',1000);
+		// ajax 异步提交任务
+		callByAJax('cloud/cloud_submitJobNotMR.action',{algorithm:'ReadSeq',arg1:input,arg2:numItems});
+	});
+	// ============ readseq =================
+	
 	
 	// ============ inputdriver
 	$('#inputdriver_submit').bind('click', function(){

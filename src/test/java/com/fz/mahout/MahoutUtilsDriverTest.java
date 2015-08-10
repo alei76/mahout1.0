@@ -30,8 +30,8 @@ public class MahoutUtilsDriverTest {
 //		testDescribe();
 		
 //		testVectorDumper();
-		testClusterDumper();
-//		testSeqDumper();
+//		testClusterDumper();
+		testSeqDumper();
 //		testlucene_vector();
 //		testarff_vector();
 //		testrowid();
@@ -99,8 +99,12 @@ public class MahoutUtilsDriverTest {
 	 * @throws Exception
 	 */
 	public static void testSeqDumper() throws Exception{
-		// TODO seqdump 等有序列化文件产生后，测试
+//		  seqdump 等有序列化文件产生后，测试
 		String[] arg= {
+//				"-i","hdfs://node101:8020/user/root/clustering/kmeans/output/clusteredPoints/part-m-00000",
+//				"-o","d:/clusters.dat",
+//				"-n","10",
+				"--help"
 				
 		};
 //		TestHUtils.getFs().delete(new Path("temp"), true);
