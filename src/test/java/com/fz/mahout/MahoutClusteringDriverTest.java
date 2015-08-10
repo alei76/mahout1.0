@@ -9,6 +9,8 @@ import org.apache.mahout.clustering.canopy.CanopyDriver;
 import org.apache.mahout.clustering.conversion.InputDriver;
 import org.apache.mahout.clustering.fuzzykmeans.FuzzyKMeansDriver;
 import org.apache.mahout.clustering.kmeans.KMeansDriver;
+import org.apache.mahout.clustering.spectral.kmeans.SpectralKMeansDriver;
+import org.apache.mahout.clustering.streaming.mapreduce.StreamingKMeansDriver;
 
 import com.fz.driver.SimpleDriver;
 import com.fz.util.TestHUtils;
@@ -27,10 +29,12 @@ public class MahoutClusteringDriverTest {
 	public static void main(String[] args) throws Exception {
 		TestHUtils.set();
 		
-//		testKMeansDriver();
-		testFuzzyKMeansDriver();
+		testKMeansDriver();
+//		testFuzzyKMeansDriver();
+//		testSpectralKMeansDriver();
 //		testInputDriver();
 //		simpleTest();
+//		testStreamingKMeansDriver();
 	}
 	
 	
@@ -91,6 +95,54 @@ public class MahoutClusteringDriverTest {
 		int ret =ToolRunner.run(TestHUtils.getConf(), new FuzzyKMeansDriver(),arg);
 		System.out.println(ret);
 	}
+	
+	public static void testSpectralKMeansDriver() throws Exception{
+		String[] arg= {
+				"-i","/user/root/clustering/spectralkmeans/input.csv",
+				"-o","/user/root/clustering/spectralkmeans/output",
+				"-d","15",
+				"-dm","org.apache.mahout.common.distance.SquaredEuclideanDistanceMeasure",
+				"-k","6",
+				"-cd","0.5",
+				"-x","3",
+//				"-ssvd",//
+				"--tempDir" ,"temp",
+				"-t","1",
+				"-oh","30000",
+				"-p","15",
+				"-q","0"
+//				"--help"
+		};
+		TestHUtils.getFs().delete(new Path("temp"), true);
+		TestHUtils.getFs().delete(new Path("/user/root/clustering/spectralkmeans/output"), true);
+		int ret =ToolRunner.run(TestHUtils.getConf(), new SpectralKMeansDriver(),arg);
+		System.out.println(ret);
+	}
+	
+	public static void testStreamingKMeansDriver() throws Exception{
+		String[] arg= {
+//				"-i","/user/root/clustering/spectralkmeans/input.csv",
+//				"-o","/user/root/clustering/spectralkmeans/output",
+//				"-d","15",
+//				"-dm","org.apache.mahout.common.distance.SquaredEuclideanDistanceMeasure",
+//				"-k","6",
+//				"-cd","0.5",
+//				"-x","3",
+////				"-ssvd",//
+//				"--tempDir" ,"temp",
+//				"-t","1",
+//				"-oh","30000",
+//				"-p","15",
+//				"-q","0"
+				"--help"
+		};
+//		TestHUtils.getFs().delete(new Path("temp"), true);
+//		TestHUtils.getFs().delete(new Path("/user/root/clustering/spectralkmeans/output"), true);
+//		int ret =ToolRunner.run(TestHUtils.getConf(), new StreamingKMeansDriver(),arg);
+		StreamingKMeansDriver.main(arg);;
+//		System.out.println(ret);
+	}
+	
 	
 	
 	public static void testInputDriver() throws Exception{

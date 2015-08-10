@@ -30,12 +30,12 @@ public class MahoutUtilsDriverTest {
 //		testDescribe();
 		
 //		testVectorDumper();
-//		testClusterDumper();
+		testClusterDumper();
 //		testSeqDumper();
 //		testlucene_vector();
 //		testarff_vector();
 //		testrowid();
-		testsplit();
+//		testsplit();
 	}
 	
 	
@@ -77,9 +77,20 @@ public class MahoutUtilsDriverTest {
 	public static void testClusterDumper() throws Exception{
 		// TODO clusterdump 等聚类完成后，测试
 		String[] arg= {
-				
+			"-i","hdfs://node101:8020/user/root/clustering/kmeans/output/clusters-3-final",
+			"-o","d:/clusters.dat",
+			"-of","TEXT",
+			"-p","hdfs://node101:8020/user/root/clustering/kmeans/output/clusteredPoints/part-m-00000",
+			"-sp","2",
+//			"-e",
+			"-dm","org.apache.mahout.common.distance.SquaredEuclideanDistanceMeasure",
+			"--tempDir","temp",
+//				"--help"
 		};
-//		TestHUtils.getFs().delete(new Path("temp"), true);
+		TestHUtils.getFs().delete(new Path("temp"), true);
+//		TestHUtils.getFs().delete(new Path("tmp/representative"), true);
+		
+		TestHUtils.getFs().delete(new Path("/use/root/utils/clusterdumper/output"),true);
 		ClusterDumper.main(arg);
 		
 	}

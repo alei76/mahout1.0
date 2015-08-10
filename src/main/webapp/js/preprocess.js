@@ -79,6 +79,23 @@ $(function(){
 	});
 	// ============ readtxt =================
 	
+	
+	// ============ readcluster
+	$('#readcluster_submit').bind('click', function(){
+//		var select_value=$('#readtxt_select').combobox("getValue");;
+		var input=$('#readcluster_input').val();
+		var distanceMeasure=$('#readcluster_distanceMeasure').combobox("getValue");
+		var include_per_cluster=$('#readcluster_include_per_cluster').combobox("getValue");
+		var points=$('#readcluster_points').val();
+		// 弹出进度框
+		popupProgressbar('提示','数据读取中...',1000);
+		// ajax 异步提交任务
+		callByAJax('cloud/cloud_submitJobNotMR.action',{algorithm:'ReadCluster',arg1:input,arg2:points,
+			arg3:distanceMeasure,arg4:include_per_cluster});
+	});
+	// ============ readcluster =================
+	
+	
 	// ============ inputdriver
 	$('#inputdriver_submit').bind('click', function(){
 		var select_value=$('#inputdriver_select').combobox("getValue");;

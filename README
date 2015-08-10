@@ -12,16 +12,26 @@ Hibernate4.3.1，struts2.3.1，Maven3.2.1，Mahout0.10
 	1> 数据生成：
       a. DatasetSplitter 数据；
       b. Describe 数据；
-	2> 数据查看，界面及后台功能完成；
+	2> 文本数据查看，界面及后台功能完成；
 	
 	3> 聚类数据生成；InputDriver
 	
+	4> 聚类中心点查看，完成；
+	
+	
 1. Utils
 	1>describe 完成 ；
+	
 
 2. Math 
 
 3. Clustering
+   1> kmeans 算法测试完成
+   2> fuzzykmeans算法测试成功；
+   3> spectralkmeans算法测试不成功；
+   4> canopy desperate
+   5> streamingkmeans 未测试；
+   6> cvb 未测试；
 
 4. Classification
 

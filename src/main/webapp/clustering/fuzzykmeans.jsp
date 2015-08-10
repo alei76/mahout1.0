@@ -34,7 +34,7 @@
 			<tr>
 				<td><label for="name">聚类个数:</label>
 				</td>
-				<td><input class="easyui-validatebox" type="text" value="3"
+				<td><input class="easyui-validatebox" type="text" value="6"
 					id="fuzzykmeans_k" data-options="required:true" style="width:300px" />
 				</td>
 			</tr>

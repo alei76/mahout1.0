@@ -77,7 +77,7 @@
 					style="width:200px;">
 						<option value="kmeans.seq">kmeans</option>
 						<option value="fuzzykmeans.seq">fuzzykmeans</option> 
-						<option value="cvb">cvb</option>
+						<option value="spectralkmeans.csv">spectralkmeans</option>
 
 				</select></td>
 				<td><a id="upload_clustering_submit" class="easyui-linkbutton"

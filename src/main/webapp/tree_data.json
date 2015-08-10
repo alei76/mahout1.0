@@ -60,10 +60,10 @@
 			}
 		},{
 			"id":124,
-			"text":"DB过滤到HDFS",
+			"text":"聚类中心查看",
 			"attributes":{
 				"folder":"0",
-				"url":"preprocess/db2hdfs.jsp"
+				"url":"preprocess/readcluster.jsp"
 			}
 		},{
 			"id":1240,
