@@ -2,6 +2,8 @@
  * preprocess 
  * 和
  * utils
+ * 和
+ * math
  * 
  */
 $(function(){
@@ -164,5 +166,22 @@ $(function(){
 			,arg1:input,arg2:output,arg3:description,arg4:select_value});
 	});
 	// ============ describe ================
+	
+	
+	// ============ vecdist
+	$('#vecdist_submit').bind('click', function(){
+		var dm=$('#vecdist_distanceMeasure').combobox("getValue");
+		var ot=$('#vecdist_outtype').combobox("getValue");
+		var input=$('#vecdist_input').val();
+		var output=$('#vecdist_output').val();
+		var seed=$('#vecdist_seed').val();
+		var mx=$('#vecdist_mx').val();
+		// 弹出进度框
+		popupProgressbar('提示','任务提交中...',1000);
+		// ajax 异步提交任务
+		callByAJax('cloud/cloud_submitJob.action',{algorithm:'VecDistRunnable',jobnums:"1",
+			arg1:input,arg2:output,arg3:seed,arg4:dm,arg5:ot,arg6:mx});
+	});
+	// ============ vecdist ================
 	
 });

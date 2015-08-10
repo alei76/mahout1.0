@@ -3,9 +3,8 @@
  */
 package com.fz.mahout;
 
-import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.util.ToolRunner;
-import org.apache.mahout.cf.taste.hadoop.als.DatasetSplitter;
+import org.apache.mahout.math.hadoop.similarity.VectorDistanceSimilarityJob;
 
 import com.fz.util.TestHUtils;
 
@@ -23,24 +22,26 @@ public class MahoutMathDriverTest {
 	public static void main(String[] args) throws Exception {
 		TestHUtils.set();
 		
-		testDatasetSplitter();
+		testVectorDistanceSimilarityJob();
 	}
 	
 	
 	/**
-	 * recommenders/ datasetsplitter
+	 * math/ vecdist
 	 * @throws Exception
 	 */
-	public static void testDatasetSplitter() throws Exception{
+	public static void testVectorDistanceSimilarityJob() throws Exception{
 		String[] arg= {
-				"-i","/user/root/user.txt",
-				"-o","recommenders/train_test_output",
-				"-t","0.9",
-				"-p","0.1"
+//				"-i","/user/root/prepare/inputdriver/output/part-m-00000",
+//				"-o","/user/root/math/vecdist/output",
+//				"-dm","org.apache.mahout.common.distance.SquaredEuclideanDistanceMeasure",
+//				"-s","/user/root/prepare/inputdriver/output/part-m-00000",
+//				"-mx",String.valueOf(Double.MAX_VALUE),
+//				"-ot","pw",
+//				"-ow"
+				"--help"
 		};
-		TestHUtils.getFs().delete(new Path("temp"), true);
-		TestHUtils.getFs().delete(new Path("recommenders/train_test_output"), true);
-		ToolRunner.run(TestHUtils.getConf(), new DatasetSplitter(),arg);
+		ToolRunner.run(TestHUtils.getConf(), new VectorDistanceSimilarityJob(),arg);
 	}
 	
 	

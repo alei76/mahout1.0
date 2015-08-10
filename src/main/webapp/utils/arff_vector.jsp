@@ -46,8 +46,8 @@
 						<option value="\t">Tab键</option>
 						<option value=" ">空格(' ')</option> 
 						<option value=",">逗号(,)</option>
-						<option value="<">小于号(&lt;;)</option>
-						<option value=">">大于号(&gt;;)</option>
+						<option value="<">小于号(&lt;)</option>
+						<option value=">">大于号(&gt;)</option>
 						<option value=".">句号(.)</option>
 						<option value="||">双竖线(||)</option>
 						

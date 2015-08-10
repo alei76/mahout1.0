@@ -33,6 +33,7 @@ Hibernate4.3.1，struts2.3.1，Maven3.2.1，Mahout0.10
 	
 
 2. Math 
+	1> vecdist 完成；
 
 3. Clustering
    1> kmeans 算法测试完成

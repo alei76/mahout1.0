@@ -89,7 +89,7 @@
 		},
 		"children":[{
 			"id":131,
-			"text":"vectordump+",
+			"text":"vectordump",
 			"attributes":{
 				"folder":"0",
 				"url":"utils/vectordump.jsp"
@@ -103,7 +103,7 @@
 			}
 		},{
 			"id":133,
-			"text":"seqdump",
+			"text":"seqdump+",
 			"attributes":{
 				"folder":"0",
 				"url":"utils/seqdump.jsp"	
@@ -265,7 +265,7 @@
 			}
 		},{
 			"id":146,
-			"text":"vecdist",
+			"text":"vecdist+",
 			"attributes":{
 				"folder":"0",
 				"url":"math/vecdist.jsp"
