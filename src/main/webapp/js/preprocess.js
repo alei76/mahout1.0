@@ -151,7 +151,7 @@ $(function(){
 			jobnums:1,arg1:input,
 			arg2:output,arg3:select_value});
 	});
-	// ============ readtxt =================
+	// ============ inputdriver =================
 	
 	// ============ describe
 	$('#describe_submit').bind('click', function(){
@@ -166,6 +166,20 @@ $(function(){
 			,arg1:input,arg2:output,arg3:description,arg4:select_value});
 	});
 	// ============ describe ================
+	
+	
+	// ============ generate_classify
+	$('#generate_classify_submit').bind('click', function(){
+		var labelindex=$('#generate_classify_labelindex').combobox("getValue");;
+		var input=$('#generate_classify_input').val();
+		var output=$('#generate_classify_output').val();
+		// 弹出进度框
+		popupProgressbar('提示','数据转换中...',1000);
+		// ajax 异步提交任务
+		callByAJax('cloud/cloud_submitJobNotMR.action',{algorithm:'GenerateClassify'
+			,arg1:input,arg2:output,arg3:labelindex});
+	});
+	// ============ generate_classify ================
 	
 	
 	// ============ vecdist

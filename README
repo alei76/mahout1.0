@@ -20,6 +20,8 @@ Hibernate4.3.1，struts2.3.1，Maven3.2.1，Mahout0.10
 	
 	5> Seq文件查看，完成(和Utils/seqdump一样)；
 	
+	6> 分类文件生成，完成
+	
 1. Utils
 	1>describe 完成 ；
 	
@@ -44,6 +46,7 @@ Hibernate4.3.1，struts2.3.1，Maven3.2.1，Mahout0.10
    6> cvb 未测试；
 
 4. Classification
+   1> trainnb 测试完成；
 
 5. SGD
 

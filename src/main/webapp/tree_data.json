@@ -74,10 +74,10 @@
 			}
 		},{
 			"id":125,
-			"text":"最佳DC",
+			"text":"分类文件生成",
 			"attributes":{
 				"folder":"0",
-				"url":"preprocess/findbestdc.jsp"
+				"url":"preprocess/generate_classify.jsp"
 			}
 		}]
 	},{
