@@ -198,4 +198,16 @@ $(function(){
 	});
 	// ============ vecdist ================
 	
+	// ============ readtestnb
+	$('#readtestnb_submit').bind('click', function(){
+		var output=$('#readtestnb_output').val();
+		var label=$('#readtestnb_label').val();
+		// 弹出进度框
+		popupProgressbar('提示','读取testnb分类结果中...',1000);
+		// ajax 异步提交任务
+		callByAJax('cloud/cloud_submitJobNotMR.action',{algorithm:'ReadTestNb',
+			arg1:output,arg2:label});
+	});
+	// ============ readtestnb ================
+	
 });
