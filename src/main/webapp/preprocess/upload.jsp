@@ -62,9 +62,10 @@
 				<td><select id="classification_select" class="easyui-combobox" name="dept"
 					style="width:200px;">
 						<option value="generate_classify.csv">generate_classify</option>
+						<option value="buildforest.csv">buildforest</option>
 						<option value="trainnb">trainnb</option>
 						<option value="testnb">testnb</option> 
-						<option value="buildforest">buildforest</option>
+						
 
 				</select></td>
 				<td><a id="upload_classification_submit" class="easyui-linkbutton"

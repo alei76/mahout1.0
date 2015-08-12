@@ -5,6 +5,8 @@ package com.fz.mahout;
 
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.util.ToolRunner;
+import org.apache.mahout.classifier.df.mapreduce.BuildForest;
+import org.apache.mahout.classifier.df.mapreduce.TestForest;
 import org.apache.mahout.classifier.naivebayes.test.TestNaiveBayesDriver;
 import org.apache.mahout.classifier.naivebayes.training.TrainNaiveBayesJob;
 
@@ -26,7 +28,9 @@ public class MahoutClassificationDriverTest {
 		
 //		testTrainNaiveBayesJob();
 		
-		testTestNaiveBayesDriver();
+//		testTestNaiveBayesDriver();
+//		testBuildForest();
+		testTestForest();
 	}
 	
 	
@@ -67,6 +71,53 @@ public class MahoutClassificationDriverTest {
 //		TestHUtils.getFs().delete(new Path("temp"), true);
 //		TestHUtils.getFs().delete(new Path("recommenders/train_test_output"), true);
 		ToolRunner.run(TestHUtils.getConf(), new TestNaiveBayesDriver(),arg);
+	}
+	/**
+	 * 拷贝mahout的lib下面的：
+	 * xstream-1.4.4.jar，xmlpull-1.1.3.1.jar，xpp3_min-1.1.4c.jar，commons-lang3-3.1.jar
+	 * 到hadoop lib目录
+	 * @throws Exception
+	 */
+	public static void testBuildForest() throws Exception{
+		String[] arg= {
+				"-d","/user/root/classification/buildforest/input.csv",
+				"-ds","/user/root/utils/describe/input.info",
+				"-o","/user/root/classification/buildforest/output",
+				"-nc",
+//				"-sl","3",
+//				"-ms","2",
+//				"-mp","0.001",
+				"-p",
+				"-t","10",   
+//				"--help"
+		};
+		String tmpPath = new Path("/user/root/classification/buildforest/output").getName();
+		TestHUtils.getFs().delete(new Path(TestHUtils.getFs().getWorkingDirectory(),tmpPath),
+				true);
+		TestHUtils.getFs().delete(new Path("/user/root/classification/buildforest/output"), true);
+		ToolRunner.run(TestHUtils.getConf(), new BuildForest(),arg);
+	}
+	
+	public static void testTestForest() throws Exception{
+		String[] arg= {
+				"-i","/user/root/classification/buildforest/input.csv",
+				"-ds","/user/root/utils/describe/input.info",
+				"-m","/user/root/classification/buildforest/output",
+				"-o","/user/root/classification/testforest/output",
+//				"-mr",
+				"-a"
+////				"-sl","3",
+////				"-ms","2",
+////				"-mp","0.001",
+//				"-p",
+//				"-t","10",   
+//				"--help"
+		};
+//		String tmpPath = new Path("/user/root/classification/buildforest/output").getName();
+//		TestHUtils.getFs().delete(new Path(TestHUtils.getFs().getWorkingDirectory(),tmpPath),
+//				true);
+		TestHUtils.getFs().delete(new Path("/user/root/classification/testforest/output"), true);
+		ToolRunner.run(TestHUtils.getConf(), new TestForest(),arg);
 	}
 
 }

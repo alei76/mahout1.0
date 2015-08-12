@@ -48,6 +48,8 @@ Hibernate4.3.1，struts2.3.1，Maven3.2.1，Mahout0.10
 4. Classification
    1> trainnb 测试完成；
    2> testnb 测试完成；
+   3> buildforest 测试完成；
+   4> testforest 测试完成；
 
 5. SGD
 

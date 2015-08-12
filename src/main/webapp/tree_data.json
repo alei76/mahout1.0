@@ -431,6 +431,20 @@
 				"folder":"0",
 				"url":"classification/testnb.jsp"
 			}
+		},{
+			"id":162,
+			"text":"buildforest",
+			"attributes":{
+				"folder":"0",
+				"url":"classification/buildforest.jsp"
+			}
+		},{
+			"id":163,
+			"text":"testforest",
+			"attributes":{
+				"folder":"0",
+				"url":"classification/testforest.jsp"
+			}
 		}]
 	}]
 }]
