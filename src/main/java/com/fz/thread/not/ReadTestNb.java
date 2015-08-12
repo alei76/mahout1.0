@@ -53,7 +53,8 @@ public class ReadTestNb implements INotMRJob {
 			ResultAnalyzer analyzer = new ResultAnalyzer(labelMap.values(),
 					"DEFAULT");
 			analyzeResults(labelMap, dirIterable, analyzer);
-			txt = analyzer.getConfusionMatrix().toString();
+//			txt = analyzer.getConfusionMatrix().toString();
+			txt = analyzer.toString();
 			txt=txt.replaceAll("\n", "<br>");
 			txt = "分类的结果是:<br>" + txt;
 			map.put("flag", "true");

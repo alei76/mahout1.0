@@ -10,7 +10,7 @@
 				<td><label for="name">testnb输出路径:</label>
 				</td>
 				<td><input class="easyui-validatebox" type="text" 
-				value="/user/root/classification/trainnb/output/"
+				value="/user/root/classification/testnb/output/"
 					id="readtestnb_output" data-options="required:true" style="width:300px" />
 				</td>
 			</tr>
@@ -30,7 +30,7 @@
 		</table>
 	
 	</div> 
-	<div id="readtestnb_return" style="padding-left: 30px;font-size: 20px;padding-top:10px;"></div>
+	<div id="readtestnb_return" style="padding-left: 30px;font-size: 15px;padding-top:10px;"></div>
 	<script type="text/javascript" src="js/preprocess.js"></script>  
 
 </body>
