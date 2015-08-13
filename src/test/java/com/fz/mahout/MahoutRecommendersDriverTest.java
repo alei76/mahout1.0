@@ -6,6 +6,7 @@ package com.fz.mahout;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.util.ToolRunner;
 import org.apache.mahout.cf.taste.hadoop.als.DatasetSplitter;
+import org.apache.mahout.math.hadoop.similarity.cooccurrence.measures.VectorSimilarityMeasures;
 
 import com.fz.util.TestHUtils;
 
@@ -23,7 +24,9 @@ public class MahoutRecommendersDriverTest {
 	public static void main(String[] args) throws Exception {
 		TestHUtils.set();
 		
-		testDatasetSplitter();
+//		testDatasetSplitter();
+//		getSimilarity();
+		testItemRecommenderJob();
 	}
 	
 	
@@ -41,6 +44,69 @@ public class MahoutRecommendersDriverTest {
 		TestHUtils.getFs().delete(new Path("temp"), true);
 		TestHUtils.getFs().delete(new Path("recommenders/train_test_output"), true);
 		ToolRunner.run(TestHUtils.getConf(), new DatasetSplitter(),arg);
+	}
+	
+	
+	public static void testItemRecommenderJob() throws Exception{
+		String[] arg= {
+				"-i","/user/root/recommenders/recommenditembased/input.csv",
+				"-o","/user/root/recommenders/recommenditembased/output",
+				"-n","9",
+//				"--usersFile","?",
+//				"--itemsFile","?",
+//				"-f","?",
+//				"-uif","?",
+//				"-b",
+				"-mxp","10",// 每个用户在最后的推荐阶段的最大参考数
+				"-mp","1",// 在计算相似度时，用户最小的参考数，如果用户的参考数低于此数值，用户将会被忽略
+				"-m","100",// 每个项目最大的相似度个数
+				"-mpiis","500",//在计算项目相似度时，每个用户或项目最大的参考个数，大于此值将会被采样处理
+				"-s","SIMILARITY_COOCCURRENCE",
+//				"-tr","?",// 丢弃项目对相似度小于此数值的项目对；
+				"-opfsm","/user/root/recommenders/recommenditembased/output_similarityMatrix",
+				"--tempDir","temp"
+				
+//				"--help"
+		};
+		TestHUtils.getFs().delete(new Path("temp"), true);
+		TestHUtils.getFs().delete(new Path("/user/root/recommenders/recommenditembased/output"), true);
+		TestHUtils.getFs().delete(new Path("/user/root/recommenders/recommenditembased/output_similarityMatrix"),
+				true);
+		ToolRunner.run(TestHUtils.getConf(), new org.apache.mahout.cf.taste.hadoop.item.RecommenderJob(),arg);
+	}
+	
+	
+	public static void testAlsRecommenderJob() throws Exception{
+		String[] arg= {
+//				"-i","/user/root/recommenders/recommenditembased/input.csv",
+//				"-o","/user/root/recommenders/recommenditembased/output",
+//				"-n","9",
+////				"--usersFile","?",
+////				"--itemsFile","?",
+////				"-f","?",
+////				"-uif","?",
+////				"-b",
+//				"-mxp","10",// 每个用户在最后的推荐阶段的最大参考数
+//				"-mp","1",// 在计算相似度时，用户最小的参考数，如果用户的参考数低于此数值，用户将会被忽略
+//				"-m","100",// 每个项目最大的相似度个数
+//				"-mpiis","500",//在计算项目相似度时，每个用户或项目最大的参考个数，大于此值将会被采样处理
+//				"-s","SIMILARITY_COOCCURRENCE",
+////				"-tr","?",// 丢弃项目对相似度小于此数值的项目对；
+//				"-opfsm","/user/root/recommenders/recommenditembased/output_similarityMatrix",
+//				"--tempDir","temp"
+				
+				"--help"
+		};
+//		TestHUtils.getFs().delete(new Path("temp"), true);
+//		TestHUtils.getFs().delete(new Path("/user/root/recommenders/recommenditembased/output"), true);
+//		TestHUtils.getFs().delete(new Path("/user/root/recommenders/recommenditembased/output_similarityMatrix"),
+//				true);
+		ToolRunner.run(TestHUtils.getConf(), new org.apache.mahout.cf.taste.hadoop.als.RecommenderJob(),arg);
+	}
+	
+	public static void getSimilarity(){
+		String t=VectorSimilarityMeasures.list();
+		System.out.println(t);
 	}
 	
 	

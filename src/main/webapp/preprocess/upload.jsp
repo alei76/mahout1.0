@@ -48,7 +48,7 @@
 				<td><select id="recommenders_select" class="easyui-combobox" name="dept"
 					style="width:200px;">
 						<option value="splitDataset.txt">splitDataset</option>
-						<option value="evaluateFactorization">evaluateFactorization</option> 
+						<option value="recommenditembased.csv">recommenditembased</option> 
 						<option value="itemsimilarity">itemsimilarity</option>
 
 				</select></td>

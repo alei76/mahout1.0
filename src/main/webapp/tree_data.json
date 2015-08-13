@@ -345,6 +345,13 @@
 				"folder":"0",
 				"url":"recommenders/splitDataset.jsp"
 			}
+		},{
+			"id":201,
+			"text":"recommenditembased+",
+			"attributes":{
+				"folder":"0",
+				"url":"recommenders/recommenditembased.jsp"
+			}
 		}]
 	},{
 		"id":15,

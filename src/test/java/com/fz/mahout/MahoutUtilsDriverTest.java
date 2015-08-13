@@ -86,7 +86,7 @@ public class MahoutUtilsDriverTest {
 	}
 	
 	public static void testResplitSequence() throws Exception{
-		// TODO MatrixDumper 测试不成功，暂未用到
+
 		String[] arg= {
 				"-i","/user/root/clustering/kmeans/input.seq",
 				"-o","/user/root/utils/resplitseq/split",
@@ -103,7 +103,7 @@ public class MahoutUtilsDriverTest {
 	 * @throws Exception
 	 */
 	public static void testClusterDumper() throws Exception{
-		// TODO clusterdump 等聚类完成后，测试
+
 		String[] arg= {
 			"-i","hdfs://node101:8020/user/root/clustering/kmeans/output/clusters-3-final",
 			"-o","d:/clusters.dat",

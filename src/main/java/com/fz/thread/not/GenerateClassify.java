@@ -98,7 +98,7 @@ public class GenerateClassify implements INotMRJob {
 	 * @return
 	 */
 	private Vector getVector(String[] lines, int start, int end) {
-		// TODO 根据字符串数组生成Vector 
+	
 		DenseVector vector=new DenseVector(end-start+1);
 		int k=0;
 		for(int i=start;i<=end;i++){
