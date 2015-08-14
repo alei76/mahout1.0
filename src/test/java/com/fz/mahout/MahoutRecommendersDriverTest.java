@@ -6,6 +6,7 @@ package com.fz.mahout;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.util.ToolRunner;
 import org.apache.mahout.cf.taste.hadoop.als.DatasetSplitter;
+import org.apache.mahout.cf.taste.hadoop.als.ParallelALSFactorizationJob;
 import org.apache.mahout.math.hadoop.similarity.cooccurrence.measures.VectorSimilarityMeasures;
 
 import com.fz.util.TestHUtils;
@@ -24,9 +25,14 @@ public class MahoutRecommendersDriverTest {
 	public static void main(String[] args) throws Exception {
 		TestHUtils.set();
 		
-//		testDatasetSplitter();
+//		
 //		getSimilarity();
-		testItemRecommenderJob();
+//		testItemRecommenderJob();
+		
+		
+//		testDatasetSplitter();
+		testParallelALSFactorizationJob();
+//		testAlsRecommenderJob();
 	}
 	
 	
@@ -76,6 +82,28 @@ public class MahoutRecommendersDriverTest {
 	}
 	
 	
+	public static void testParallelALSFactorizationJob() throws Exception{
+		String[] arg= {
+				"-i","/user/root/recommenders/splitDataset/train_test_output/trainingSet",
+				"-o","/user/root/recommenders/parallelALS/output",
+				"--lambda","0.065",
+//				 "--implicitFeedback", "?",
+//				 "--alpha","?",
+				 "--numFeatures","20",
+				 "--numIterations","10",
+				 "--numThreadsPerSolver","1",
+				 "--tempDir","temp"
+//				"--help"
+		};
+//		TestHUtils.getFs().delete(new Path("temp"), true);
+//		TestHUtils.getFs().delete(new Path("recommenders/train_test_output"), true);
+		ToolRunner.run(TestHUtils.getConf(), new ParallelALSFactorizationJob(),arg);
+	}
+	
+	/**
+	 * 参考http://blog.csdn.net/fansy1990/article/details/12259975
+	 * @throws Exception
+	 */
 	public static void testAlsRecommenderJob() throws Exception{
 		String[] arg= {
 //				"-i","/user/root/recommenders/recommenditembased/input.csv",

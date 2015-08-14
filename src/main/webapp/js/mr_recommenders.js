@@ -58,4 +58,32 @@ $(function(){
 	// ------recommenditembased
 	
 	
+	// parallelALS---
+	$('#parallelALS_submit').bind('click', function(){
+		
+		// 检查是否有“MR监控页面”，如果有，则退出，并提示关闭
+		if(exitsMRmonitor()){
+			return ;
+		}	
+		var input=$('#parallelALS_input').val();
+		var output=$('#parallelALS_output').val();
+		var lambda=$('#parallelALS_lambda').val();
+		var numFeatures=$('#parallelALS_numFeatures').val();
+		var numIterations=$('#parallelALS_numIterations').val();
+		var numThreadsPerSolver=$('#parallelALS_numThreadsPerSolver').val();
+		// 弹出进度框
+		popupProgressbar('推荐MR','parallelALS任务提交中...',1000);
+		// ajax 异步提交任务
+		
+		var jobnums_=parseInt(numIterations);
+		jobnums_=jobnums_+jobnums_+3;
+		
+		callByAJax('cloud/cloud_submitJob.action',{algorithm:"ParallelALSRunnable",jobnums:jobnums_,
+			arg1:input,arg2:output,arg3:lambda,arg4:numFeatures,arg5:numIterations,
+			arg6:numThreadsPerSolver});
+		
+	});
+	
+	// ------parallelALS
+	
 });

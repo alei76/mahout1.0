@@ -346,6 +346,13 @@
 				"url":"recommenders/splitDataset.jsp"
 			}
 		},{
+			"id":2001,
+			"text":"parallelALS+",
+			"attributes":{
+				"folder":"0",
+				"url":"recommenders/parallelALS.jsp"
+			}
+		},{
 			"id":201,
 			"text":"recommenditembased+",
 			"attributes":{

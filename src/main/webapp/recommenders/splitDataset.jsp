@@ -14,7 +14,7 @@
 				</td>
 				<td><input class="easyui-validatebox" type="text"
 					id="splitDataset_input" name="input" data-options="required:true"
-					style="width:300px" value="/user/root/recommenders/splitDataset/input.txt" /></td>
+					style="width:400px" value="/user/root/recommenders/splitDataset/input.txt" /></td>
 
 			</tr>
 			<tr>
@@ -22,7 +22,7 @@
 				</td>
 				<td><input class="easyui-validatebox" type="text"
 					id="splitDataset_output" name="output" data-options="required:true"
-					style="width:300px"
+					style="width:400px"
 					value="/user/root/recommenders/splitDataset/train_test_output" /></td>
 
 			</tr>
