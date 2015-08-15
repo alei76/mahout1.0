@@ -86,4 +86,31 @@ $(function(){
 	
 	// ------parallelALS
 	
+	
+	//recommendfactorized---
+	$('#recommendfactorized_submit').bind('click', function(){
+		
+		// 检查是否有“MR监控页面”，如果有，则退出，并提示关闭
+		if(exitsMRmonitor()){
+			return ;
+		}	
+		var input=$('#recommendfactorized_input').val();
+		var output=$('#recommendfactorized_output').val();
+		var userFeatures=$('#recommendfactorized_userFeatures').val();
+		var itemFeatures=$('#recommendfactorized_itemFeatures').val();
+		var num=$('#recommendfactorized_num').val();
+		var maxRating=$('#recommendfactorized_maxRating').val();
+		var numThreads=$('#recommendfactorized_numThreads').val();
+		// 弹出进度框
+		popupProgressbar('推荐MR','recommendfactorized任务提交中...',1000);
+		// ajax 异步提交任务
+		
+		callByAJax('cloud/cloud_submitJob.action',{algorithm:"RecommendFactorizedRunnable",jobnums:'1',
+			arg1:input,arg2:output,arg3:userFeatures,arg4:itemFeatures,arg5:num,
+			arg6:maxRating,arg7:numThreads});
+		
+	});
+	
+	// ------recommendfactorized
+	
 });

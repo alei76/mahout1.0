@@ -353,6 +353,13 @@
 				"url":"recommenders/parallelALS.jsp"
 			}
 		},{
+			"id":2002,
+			"text":"recommendfactorized+",
+			"attributes":{
+				"folder":"0",
+				"url":"recommenders/recommendfactorized.jsp"
+			}
+		},{
 			"id":201,
 			"text":"recommenditembased+",
 			"attributes":{
