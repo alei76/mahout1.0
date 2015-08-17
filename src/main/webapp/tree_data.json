@@ -360,6 +360,13 @@
 				"url":"recommenders/recommendfactorized.jsp"
 			}
 		},{
+			"id":2003,
+			"text":"evaluateFactorization+",
+			"attributes":{
+				"folder":"0",
+				"url":"recommenders/evaluateFactorization.jsp"
+			}
+		},{
 			"id":201,
 			"text":"recommenditembased+",
 			"attributes":{

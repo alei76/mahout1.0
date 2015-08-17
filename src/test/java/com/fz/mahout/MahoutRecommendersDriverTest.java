@@ -6,6 +6,7 @@ package com.fz.mahout;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.util.ToolRunner;
 import org.apache.mahout.cf.taste.hadoop.als.DatasetSplitter;
+import org.apache.mahout.cf.taste.hadoop.als.FactorizationEvaluator;
 import org.apache.mahout.cf.taste.hadoop.als.ParallelALSFactorizationJob;
 import org.apache.mahout.math.hadoop.similarity.cooccurrence.measures.VectorSimilarityMeasures;
 
@@ -32,7 +33,8 @@ public class MahoutRecommendersDriverTest {
 		
 //		testDatasetSplitter();
 //		testParallelALSFactorizationJob();
-		testAlsRecommenderJob();
+//		testAlsRecommenderJob();
+		testEvaluateFactorization();
 	}
 	
 	
@@ -124,7 +126,21 @@ public class MahoutRecommendersDriverTest {
 		TestHUtils.getFs().delete(new Path("/user/root/recommenders/recommendfactorized/output"), true);
 		ToolRunner.run(TestHUtils.getConf(), new org.apache.mahout.cf.taste.hadoop.als.RecommenderJob(),arg);
 	}
-	
+	public static void testEvaluateFactorization() throws Exception{
+		String[] arg= {
+				"-i","/user/root/recommenders/splitDataset/train_test_output/probeSet",//
+				"-o","/user/root/recommenders/evaluateFactorization/output",
+				"--userFeatures","/user/root/recommenders/parallelALS/output/U",
+				"--itemFeatures","/user/root/recommenders/parallelALS/output/M",
+//////				"--usesLongIDs","?",
+				"--tempDir","temp"
+				
+//				"--help"
+		};
+		TestHUtils.getFs().delete(new Path("temp"), true);
+		TestHUtils.getFs().delete(new Path("/user/root/recommenders/evaluateFactorization/output"), true);
+		ToolRunner.run(TestHUtils.getConf(),new  FactorizationEvaluator(),arg);
+	}
 	public static void getSimilarity(){
 		String t=VectorSimilarityMeasures.list();
 		System.out.println(t);

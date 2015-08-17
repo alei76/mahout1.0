@@ -86,7 +86,6 @@ $(function(){
 	
 	// ------parallelALS
 	
-	
 	//recommendfactorized---
 	$('#recommendfactorized_submit').bind('click', function(){
 		
@@ -113,4 +112,26 @@ $(function(){
 	
 	// ------recommendfactorized
 	
+	
+	//evaluateFactorization---
+	$('#evaluateFactorization_submit').bind('click', function(){
+		
+		// 检查是否有“MR监控页面”，如果有，则退出，并提示关闭
+		if(exitsMRmonitor()){
+			return ;
+		}	
+		var input=$('#evaluateFactorization_input').val();
+		var output=$('#evaluateFactorization_output').val();
+		var userFeatures=$('#evaluateFactorization_userFeatures').val();
+		var itemFeatures=$('#evaluateFactorization_itemFeatures').val();
+		// 弹出进度框
+		popupProgressbar('推荐MR','evaluateFactorization任务提交中...',1000);
+		// ajax 异步提交任务
+		
+		callByAJax('cloud/cloud_submitJob.action',{algorithm:"EvaluateFactorizationRunnable",jobnums:'1',
+			arg1:input,arg2:output,arg3:userFeatures,arg4:itemFeatures});
+		
+	});
+	
+	// ------evaluateFactorization
 });
