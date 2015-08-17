@@ -373,6 +373,13 @@
 				"folder":"0",
 				"url":"recommenders/recommenditembased.jsp"
 			}
+		},{
+			"id":202,
+			"text":"itemsimilarity+",
+			"attributes":{
+				"folder":"0",
+				"url":"recommenders/itemsimilarity.jsp"
+			}
 		}]
 	},{
 		"id":15,

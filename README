@@ -58,5 +58,6 @@ Hibernate4.3.1，struts2.3.1，Maven3.2.1，Mahout0.10
 7. Recommenders
 	1> DatasetSplitter : 测试完成；
 	2> ParallelALSFactorizationJob 测试完成；
-	3> AlsRecommenderJob 
+	3> AlsRecommenderJob  测试完成；
+	4> FactorizationEvaluator 测试完成；
 	2> RecommendItembased 测试完成；

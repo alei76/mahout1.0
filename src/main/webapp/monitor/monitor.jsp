@@ -61,8 +61,9 @@
 	</div>
 
 	<script type="text/javascript">
-		// 自动定时刷新 1s
-	 	var monitor_cf_interval= setInterval("monitor_one_refresh()",3000);
+		// 自动定时刷新 1.5s
+//	 	var monitor_cf_interval= setInterval("monitor_one_refresh()",3000);
+	 	var monitor_cf_interval= setInterval("monitor_one_refresh()",1500);
 	</script>
 	<script type="text/javascript" src="js/mr_monitor.js"></script>
   </body>

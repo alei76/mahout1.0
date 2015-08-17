@@ -49,7 +49,7 @@
 					style="width:200px;">
 						<option value="splitDataset.txt">splitDataset</option>
 						<option value="recommenditembased.csv">recommenditembased</option> 
-						<option value="itemsimilarity">itemsimilarity</option>
+						<option value="itemsimilarity.csv">itemsimilarity</option>
 
 				</select></td>
 				<td><a id="upload_recommenders_submit" class="easyui-linkbutton"

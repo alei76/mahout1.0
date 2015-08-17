@@ -8,6 +8,7 @@ import org.apache.hadoop.util.ToolRunner;
 import org.apache.mahout.cf.taste.hadoop.als.DatasetSplitter;
 import org.apache.mahout.cf.taste.hadoop.als.FactorizationEvaluator;
 import org.apache.mahout.cf.taste.hadoop.als.ParallelALSFactorizationJob;
+import org.apache.mahout.cf.taste.hadoop.similarity.item.ItemSimilarityJob;
 import org.apache.mahout.math.hadoop.similarity.cooccurrence.measures.VectorSimilarityMeasures;
 
 import com.fz.util.TestHUtils;
@@ -34,7 +35,8 @@ public class MahoutRecommendersDriverTest {
 //		testDatasetSplitter();
 //		testParallelALSFactorizationJob();
 //		testAlsRecommenderJob();
-		testEvaluateFactorization();
+//		testEvaluateFactorization();
+		testItemSimilarityJob();
 	}
 	
 	
@@ -141,6 +143,26 @@ public class MahoutRecommendersDriverTest {
 		TestHUtils.getFs().delete(new Path("/user/root/recommenders/evaluateFactorization/output"), true);
 		ToolRunner.run(TestHUtils.getConf(),new  FactorizationEvaluator(),arg);
 	}
+	
+	public static void testItemSimilarityJob() throws Exception{
+		String[] arg= {
+				"-i","/user/root/recommenders/itemsimilarity/input.csv",//
+				"-o","/user/root/recommenders/itemsimilarity/output",
+				"-s","SIMILARITY_COOCCURRENCE",
+				"-m","100",// 每个项目最多的相似项目个数
+				"-mppu","500",//在计算项目相似度时，每个用户或项目最大的参考个数，大于此值将会被采样处理
+				"-mp","1",//在计算相似度时，用户最小的参考数，如果用户的参考数低于此数值，用户将会被忽略
+				"--tempDir","temp"
+//				"-b",
+//				"-tr","?",// 丢弃项目对相似度小于此数值的项目对
+				
+//				"--help"
+		};
+//		TestHUtils.getFs().delete(new Path("temp"), true);
+//		TestHUtils.getFs().delete(new Path("/user/root/recommenders/evaluateFactorization/output"), true);
+		ToolRunner.run(TestHUtils.getConf(),new  ItemSimilarityJob(),arg);
+	}
+	
 	public static void getSimilarity(){
 		String t=VectorSimilarityMeasures.list();
 		System.out.println(t);

@@ -151,7 +151,7 @@ public class Utils {
 		counter++;
 		StringBuffer buff =new StringBuffer();
 		for(int i=0;i<counter;i++){
-			buff.append(".");
+			buff.append("~");
 		}
 		if(counter>=7){
 			counter=0;

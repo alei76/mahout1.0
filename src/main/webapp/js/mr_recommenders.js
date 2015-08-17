@@ -134,4 +134,32 @@ $(function(){
 	});
 	
 	// ------evaluateFactorization
+	
+	// itemsimilarity---
+	$('#itemsimilarity_submit').bind('click', function(){
+		
+		// 检查是否有“MR监控页面”，如果有，则退出，并提示关闭
+		if(exitsMRmonitor()){
+			return ;
+		}	
+		var input=$('#itemsimilarity_input').val();
+		var output=$('#itemsimilarity_output').val();
+		var b=$('#itemsimilarity_b').combobox("getValue");
+		
+		var mp=$('#itemsimilarity_mp').val();
+		var m=$('#itemsimilarity_m').val();
+		var mppu=$('#itemsimilarity_mppu').val();
+		
+		var s=$('#itemsimilarity_s').combobox("getValue");
+		
+		// 弹出进度框
+		popupProgressbar('推荐MR','itemsimilarity任务提交中...',1000);
+		// ajax 异步提交任务
+		
+		callByAJax('cloud/cloud_submitJob.action',{algorithm:"ItemSimilarityJobRunnable",jobnums:"8",
+			arg1:input,arg2:output,arg3:b,arg4:mp,arg5:m,
+			arg6:mppu,arg7:s});
+		
+	});
+	// ------itemsimilarity
 });
