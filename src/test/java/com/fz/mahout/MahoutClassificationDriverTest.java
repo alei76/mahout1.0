@@ -5,6 +5,7 @@ package com.fz.mahout;
 
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.util.ToolRunner;
+import org.apache.mahout.classifier.ConfusionMatrixDumper;
 import org.apache.mahout.classifier.df.mapreduce.BuildForest;
 import org.apache.mahout.classifier.df.mapreduce.TestForest;
 import org.apache.mahout.classifier.naivebayes.test.TestNaiveBayesDriver;
@@ -30,7 +31,8 @@ public class MahoutClassificationDriverTest {
 		
 //		testTestNaiveBayesDriver();
 //		testBuildForest();
-		testTestForest();
+//		testTestForest();
+		testConfusionMatrixDumper();
 	}
 	
 	
@@ -53,6 +55,24 @@ public class MahoutClassificationDriverTest {
 //		TestHUtils.getFs().delete(new Path("recommenders/train_test_output"), true);
 		ToolRunner.run(TestHUtils.getConf(), new TrainNaiveBayesJob(),arg);
 	}
+	
+	public static void testConfusionMatrixDumper() throws Exception{
+		String[] arg= {
+//				"-i","/user/root/process/generate_classify/input.seq",
+//				"-o","/user/root/classification/trainnb/output",
+//				"-a","1.0",
+//				"-li","/user/root/classification/trainnb/labelIndex",
+//				"-ow",
+//				"--tempDir","temp",
+////				"-c" //  TODO  不使用此参数，此参数未调通   
+				"--help"
+		};
+//		TestHUtils.getFs().delete(new Path("temp"), true);
+//		TestHUtils.getFs().delete(new Path("recommenders/train_test_output"), true);
+//		ToolRunner.run(TestHUtils.getConf(), new ConfusionMatrixDumper(),arg);
+		ConfusionMatrixDumper.main(arg);
+	}
+	
 	/**
 	 * TODO   能分类的数据很少？
 	 * @throws Exception
@@ -99,6 +119,7 @@ public class MahoutClassificationDriverTest {
 	}
 	
 	public static void testTestForest() throws Exception{
+		// TODO 输入数据没有，暂时不测试
 		String[] arg= {
 				"-i","/user/root/classification/buildforest/input.csv",
 				"-ds","/user/root/utils/describe/input.info",

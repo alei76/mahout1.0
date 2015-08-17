@@ -11,9 +11,9 @@ import com.fz.util.HUtils;
 import com.fz.util.Utils;
 
 /**
- * itembased recommender
+ * itemsimilarity
  * @author fansy
- * @date 2015-8-13
+ * @date 2015-8-17
  */
 public class ItemSimilarityJobRunnable implements RunnableWithArgs {
 //	arg1:input,arg2:output,arg3:b,arg4:mp,arg5:m,
